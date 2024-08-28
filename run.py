@@ -26,7 +26,7 @@ def main_menu():
     print("[3] maybe i add something later")
     print("[0] Exit the program")
 
-main_menu()
+"""main_menu()
 choice = int(input("Enter your option: "))
 
 while choice != 0:
@@ -47,7 +47,7 @@ while choice != 0:
     choice = int(input("Enter your option: "))
 
 print("Thanks for playing the game")
-
+"""
 
 """
 valid_choices = ["1", "2", "3"]
@@ -57,3 +57,15 @@ while choice not in valid_choices:
 
     tried with validator - doesn't work at the moment, will comeback to it later
 """
+
+def get_word():
+    """
+    Picks a random word form Google sheet.
+    """
+    
+    word_list = WORD_SHEET.col_values(1)
+    word = random.choice(word_list)
+
+
+get_word()
+print(get_word())
