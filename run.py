@@ -55,6 +55,17 @@ def input_user():
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
+            check_guess
+
+
+def check_guess(guess):
+    """
+    Validates if letter is in word
+    """
+    if guess in word:
+        print("Guess was correct!")
+    else:
+        print("Incorrect guess, try another letter")
 
 
 def main_menu():
