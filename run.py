@@ -20,7 +20,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("words_sheet")
 WORD_SHEET = SHEET.worksheet("words")
 
-
 def get_word():
     """
     Picks a random word form Google sheet.
@@ -30,8 +29,8 @@ def get_word():
     global word
     word = random.choice(word_list)
 
-    for x in word:
-        print("_", end = " ")
+   #1h for x in word:
+       # print("_", end = " ")
 
 
 def input_user():
@@ -40,11 +39,9 @@ def input_user():
     """
     letters_guessed = []
     game_over = False
-
+    os.system("clear")
     while game_over is False:
         letters_guessed_str = " ".join(letters_guessed)
-
-        os.system("clear")
 
         print(f"Guessed letters: {letters_guessed_str}")
         guess = input("Guess a letter: ").upper()
@@ -58,7 +55,7 @@ def input_user():
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
-            check_guess
+            check_guess(guess)
 
 
 def check_guess(guess):
@@ -88,6 +85,7 @@ while choice != 0:
     if choice == 1:
         # Opens Hangman Game
         print("You choose 1, Game will start shortly....")
+        get_word()
         input_user()
     elif choice == 2:
         # Opens Game Instructions
