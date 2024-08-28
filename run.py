@@ -77,30 +77,31 @@ def main_menu():
     print("[2] Game Instructions")
     print("[3] maybe i add something later")
     print("[0] Exit the program")
+    choice = int(input("Enter your option: "))
 
-main_menu()
-choice = int(input("Enter your option: "))
-
-while choice != 0:
-    if choice == 1:
-        # Opens Hangman Game
-        print("You choose 1, Game will start shortly....")
-        get_word()
-        input_user()
-    elif choice == 2:
-        # Opens Game Instructions
-        print("You choose 2, Game Instructions will show in a few seconds....")
-    elif choice == 3:
-        # maybe there is a 3th Option :D
-        print("Nothing to see in choice 3, maybe later..")
-    else: 
-        print("choice not available")
+    while choice != 0:
+        if choice == 1:
+            # Opens Hangman Game
+            print("You choose 1, Game will start shortly....")
+            get_word()
+            input_user()
+        elif choice == 2:
+            # Opens Game Instructions
+            print("You choose 2, Game Instructions will show in a few seconds....")
+        elif choice == 3:
+            # maybe there is a 3th Option :D
+            print("Nothing to see in choice 3, maybe later..")
+        else: 
+            print("choice not available")
     
     print()
     main_menu()
     choice = int(input("Enter your option: "))
 
 print("Thanks for playing the game")
+
+
+main_menu()
 
 
 """
