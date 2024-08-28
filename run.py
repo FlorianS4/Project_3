@@ -2,6 +2,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import random
+import os
 
 # width for characters
 term_width = 80
@@ -42,6 +43,8 @@ def input_user():
 
     while game_over is False:
         letters_guessed_str = " ".join(letters_guessed)
+
+        os.system("clear")
 
         print(f"Guessed letters: {letters_guessed_str}")
         guess = input("Guess a letter: ").upper()
