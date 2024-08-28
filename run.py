@@ -3,6 +3,9 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 
+# width for characters
+term_width = 80
+
 # Variables for google sheet
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -64,8 +67,40 @@ def get_word():
     """
     
     word_list = WORD_SHEET.col_values(1)
+    global word
     word = random.choice(word_list)
 
+    for x in word:
+        print("_", end = " ")
 
+
+def input_user():
+    """
+    takes input from user
+    """
+    letters_guessed = []
+    game_over = False
+
+    while game_over is False:
+        letters_guessed_str = " ".join(letters_guessed)
+
+        print(f"Guessed letters: {letters_guessed_str}")
+        guess = input("Guess a letter: ").upper()
+
+        if guess == "HELP":
+            print(word)
+        elif guess in letters_guessed:
+            print("Letter already guessed, try another")
+        elif not guess.isalpha() or len(guess) > 1:
+            print("Guess not vialble, guess again")
+        else:
+            letters_guessed.append(guess)
+            letters_guessed.sort()
+
+"""
 get_word()
 print(get_word())
+"""
+
+input_user()
+print(input(user))
