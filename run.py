@@ -29,9 +29,8 @@ def get_word():
     global word
     word = random.choice(word_list)
 
-   #1h for x in word:
-       # print("_", end = " ")
-
+ #for x in word:
+        #print("_", end = " ")
 
 def input_user():
     """
@@ -40,6 +39,72 @@ def input_user():
     letters_guessed = []
     game_over = False
     wrong_guesses_left = 8
+
+    Hangman = ['''
+	  +---+
+	  |   |
+	      |
+          | 
+	      |
+	      |
+	      |
+	=========''', '''
+	  +---+
+	  |   |
+	  O   |
+	      |
+          | 
+	      |
+	      |
+	=========''', '''
+	  +---+
+	  |   |        
+	  O   |
+	  |   |
+          |   
+	      |
+	      |
+	=========''', '''
+	  +---+
+	  |   |
+	  O   |
+	  |   |
+      |   | 
+	      |
+	      |
+	=========''', '''
+	  +---+
+	  |   |
+	  O   |
+	 /|   |
+      |   | 
+	      |
+	      |
+	=========''', '''
+	  +---+
+	  |   |
+	  O   |
+	 /|\  |
+      |   | 
+	      |
+	      |
+	=========''', '''
+	  +---+
+	  |   |
+	  O   |
+	 /|\  |
+	  |   |
+     /    | 
+	      |
+	=========''', '''
+	  +---+
+	  |   |
+	  O   |
+	 /|\  |
+	  |   |
+     / \  | 
+	      |
+	=========''']
 
     os.system("clear")
     while game_over is False:
