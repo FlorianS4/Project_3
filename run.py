@@ -39,11 +39,13 @@ def input_user():
     """
     letters_guessed = []
     game_over = False
+    wrong_guesses_left = 8
+
     os.system("clear")
     while game_over is False:
         letters_guessed_str = " ".join(letters_guessed)
 
-        print(f"Guessed letters: {letters_guessed_str}")
+        print(f"Guessed letters: {letters_guessed_str} and guess left {wrong_guesses_left}")
         guess = input("Guess a letter: ").upper()
 
         if guess == "HELP":
@@ -55,10 +57,11 @@ def input_user():
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
-            check_guess(guess)
+            wrong_guesses_left = check_guess(guess, wrong_guesses_left)
+            
 
 
-def check_guess(guess):
+def check_guess(guess, wrong_guesses_left):
     """
     Validates if letter is in word
     """
@@ -66,7 +69,10 @@ def check_guess(guess):
         print("Guess was correct!")
     else:
         print("Incorrect guess, try another letter")
-
+        print(wrong_guesses_left)
+        wrong_guesses_left -= 1
+        print(wrong_guesses_left)
+    return wrong_guesses_left
 
 def main_menu():
     """
