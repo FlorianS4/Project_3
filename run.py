@@ -3,6 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 import os
+from hangman_stages import HANGMAN_STAGES
 
 # width for characters
 term_width = 80
@@ -29,6 +30,7 @@ def get_word():
     global word
     word = random.choice(word_list)
 
+
  #for x in word:
         #print("_", end = " ")
 
@@ -39,6 +41,7 @@ def input_user():
     letters_guessed = []
     game_over = False
     wrong_guesses_left = 8
+    hangman_index = 0
 
     os.system("clear")
     while game_over is False:
@@ -56,11 +59,11 @@ def input_user():
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
-            wrong_guesses_left = check_guess(guess, wrong_guesses_left)
+            wrong_guesses_left, hangman_index  = check_guess(guess, wrong_guesses_left, hangman_index)
             
 
 
-def check_guess(guess, wrong_guesses_left):
+def check_guess(guess, wrong_guesses_left, hangman_index):
     """
     Validates if letter is in word
     """
@@ -71,7 +74,9 @@ def check_guess(guess, wrong_guesses_left):
         print(wrong_guesses_left)
         wrong_guesses_left -= 1
         print(wrong_guesses_left)
-    return wrong_guesses_left
+        print("     " + HANGMAN_STAGES[hangman_index])
+        hangman_index += 1
+    return wrong_guesses_left, hangman_index
 
 def main_menu():
     """
