@@ -29,7 +29,7 @@ def get_word():
     word_list = WORD_SHEET.col_values(1)
     global word, hint
     word = random.choice(word_list)
-    hint = "_" * len(word)
+    
 
 
  #for x in word:
@@ -67,18 +67,21 @@ def input_user():
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
-            wrong_guesses_left, hangman_index, hint  = check_guess(guess, wrong_guesses_left, hangman_index, hint)
+            wrong_guesses_left, hangman_index, hint, game_over  = check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over)
             
 
 
-def check_guess(guess, wrong_guesses_left, hangman_index, hint):
+def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     """
     Validates if letter is in word
     """
     if guess in word:
         print("Guess was correct!")
         hint = update_hint(guess, hint)
-    elif guess not in word and hangman_index == 7:
+    elif guess not in word and hangman_index == 6:
+        wrong_guesses_left -= 1
+        print(wrong_guesses_left)
+        print("     " + HANGMAN_STAGES[hangman_index])
         game_over = True
         print("Game Over! Returning to main menu")
         main_menu()
@@ -89,7 +92,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint):
         print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
         hangman_index += 1
-    return wrong_guesses_left, hangman_index, hint
+    return wrong_guesses_left, hangman_index, hint, game_over
 
 def update_hint(guess, hint):
     """
