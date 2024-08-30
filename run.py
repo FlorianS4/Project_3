@@ -40,7 +40,7 @@ def input_user():
     """
     letters_guessed = []
     game_over = False
-    wrong_guesses_left = 8
+    wrong_guesses_left = 7
     hangman_index = 0
 
     os.system("clear")
@@ -69,6 +69,10 @@ def check_guess(guess, wrong_guesses_left, hangman_index):
     """
     if guess in word:
         print("Guess was correct!")
+    elif guess not in word and hangman_index == 7:
+        game_over = True
+        print("Game Over! Returning to main menu")
+        main_menu()
     else:
         print("Incorrect guess, try another letter")
         print(wrong_guesses_left)
