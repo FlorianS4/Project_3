@@ -27,8 +27,9 @@ def get_word():
     """
     
     word_list = WORD_SHEET.col_values(1)
-    global word
+    global word, hint
     word = random.choice(word_list)
+    hint = "_" * len(word)
 
 
  #for x in word:
@@ -44,7 +45,14 @@ def input_user():
     hangman_index = 0
 
     os.system("clear")
+
+    hint = ""
+    for i in range(0, len(word)):
+        hint += "_"
+    
+
     while game_over is False:
+        print(hint)
         letters_guessed_str = " ".join(letters_guessed)
 
         print(f"Guessed letters: {letters_guessed_str} and guess left {wrong_guesses_left}")
@@ -59,16 +67,17 @@ def input_user():
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
-            wrong_guesses_left, hangman_index  = check_guess(guess, wrong_guesses_left, hangman_index)
+            wrong_guesses_left, hangman_index, hint  = check_guess(guess, wrong_guesses_left, hangman_index, hint)
             
 
 
-def check_guess(guess, wrong_guesses_left, hangman_index):
+def check_guess(guess, wrong_guesses_left, hangman_index, hint):
     """
     Validates if letter is in word
     """
     if guess in word:
         print("Guess was correct!")
+        hint = update_hint(guess, hint)
     elif guess not in word and hangman_index == 7:
         game_over = True
         print("Game Over! Returning to main menu")
@@ -80,7 +89,21 @@ def check_guess(guess, wrong_guesses_left, hangman_index):
         print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
         hangman_index += 1
-    return wrong_guesses_left, hangman_index
+    return wrong_guesses_left, hangman_index, hint
+
+def update_hint(guess, hint):
+    """
+    Adds a correct guess and updates hint
+    """
+    hint_arr = list(hint)
+    pos_of_guess = word.index(guess)
+    hint_arr[pos_of_guess] = guess
+    hint = "".join(hint_arr)
+
+    if "_" not in hint:
+       game_over = True
+
+    return hint
 
 def main_menu():
     """
