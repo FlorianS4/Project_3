@@ -98,10 +98,14 @@ def update_hint(guess, hint):
     """
     Adds a correct guess and updates hint
     """
+    pos_of_guess = [i for i, character in enumerate(word) if character == guess]
     hint_arr = list(hint)
-    pos_of_guess = word.index(guess)
-    hint_arr[pos_of_guess] = guess
+
+    for i in pos_of_guess:
+        hint_arr[i] = guess
+    
     hint = "".join(hint_arr)
+
 
     if "_" not in hint:
        game_over = True
