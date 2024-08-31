@@ -105,6 +105,8 @@ def update_hint(guess, hint):
 
     if "_" not in hint:
        game_over = True
+       print("Game Over! You won, returning to Main Menu for now")
+       main_menu()
 
     return hint
 
