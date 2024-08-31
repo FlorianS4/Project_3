@@ -122,7 +122,7 @@ def main_menu():
     print("[1] Play Hangman")
     print("[2] Game Instructions")
     print("[3] maybe i add something later")
-    print("[0] Exit the program")
+    print("[4] Exit the program")
     choice = int(input("Enter your option: "))
 
     while choice != 0:
@@ -137,6 +137,8 @@ def main_menu():
         elif choice == 3:
             # maybe there is a 3th Option :D
             print("Nothing to see in choice 3, maybe later..")
+        elif choice == 4:
+            exit()
         else: 
             print("choice not available")
     
