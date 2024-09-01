@@ -3,6 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 import os
+import time
 from hangman_stages import HANGMAN_STAGES
 
 # width for characters
@@ -43,6 +44,8 @@ def input_user():
     game_over = False
     wrong_guesses_left = 7
     hangman_index = 0
+    global timer_start
+    timer_start = time.time()
 
     os.system("clear")
 
@@ -84,6 +87,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         print("     " + HANGMAN_STAGES[hangman_index])
         game_over = True
         print("Game Over! Returning to main menu")
+        timer_end = time.time()
         main_menu()
     else:
         print("Incorrect guess, try another letter")
@@ -109,6 +113,9 @@ def update_hint(guess, hint):
 
     if "_" not in hint:
        game_over = True
+       timer_end = time.time()
+       seconds = timer_end - timer_start
+       print(seconds)
        print("Game Over! You won, returning to Main Menu for now")
        main_menu()
 
