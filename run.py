@@ -80,7 +80,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     """
     if guess in word:
         print("Guess was correct!")
-        hint = update_hint(guess, hint)
+        hint = update_hint(guess, hint, wrong_guesses_left)
     elif guess not in word and hangman_index == 6:
         wrong_guesses_left -= 1
         print(wrong_guesses_left)
@@ -98,7 +98,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         hangman_index += 1
     return wrong_guesses_left, hangman_index, hint, game_over
 
-def update_hint(guess, hint):
+def update_hint(guess, hint, wrong_guesses_left):
     """
     Adds a correct guess and updates hint
     """
@@ -117,10 +117,35 @@ def update_hint(guess, hint):
        seconds = timer_end - timer_start
        seconds = round(seconds, 2)
        print(seconds)
+       get_username(wrong_guesses_left, seconds)
        print("Game Over! You won, returning to Main Menu for now")
        main_menu()
 
     return hint
+
+def username_validation(username):
+    """
+    Validate username to be all letters and within 12 characters
+    """
+    try:
+        if not username.isalpha() or len(username) > 12:
+            raise ValueError(
+                f"Your input {username}"
+            )
+    except ValueError as e:
+        print(f"Invalid username: {e} please try again.\nYou need to enter max 12 letter/s only.\n")
+        return False
+    else: 
+        return True
+
+def get_username(wrong_guesses_left, seconds):
+    """
+    getting and validating username and add it to the scoreboard
+    """
+    username_to_validate = False
+    while username_to_validate is False:
+        username = input("Enter username (max. 12 letters): ")
+        username_to_validate = username_validation(username)
 
 def main_menu():
     """
