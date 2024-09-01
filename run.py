@@ -115,6 +115,7 @@ def update_hint(guess, hint):
        game_over = True
        timer_end = time.time()
        seconds = timer_end - timer_start
+       seconds = round(seconds, 2)
        print(seconds)
        print("Game Over! You won, returning to Main Menu for now")
        main_menu()
