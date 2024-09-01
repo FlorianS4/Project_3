@@ -73,7 +73,6 @@ def input_user():
             wrong_guesses_left, hangman_index, hint, game_over  = check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over)
             
 
-
 def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     """
     Validates if letter is in word
@@ -97,6 +96,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         print("     " + HANGMAN_STAGES[hangman_index])
         hangman_index += 1
     return wrong_guesses_left, hangman_index, hint, game_over
+
 
 def update_hint(guess, hint, wrong_guesses_left):
     """
@@ -123,6 +123,7 @@ def update_hint(guess, hint, wrong_guesses_left):
 
     return hint
 
+
 def username_validation(username):
     """
     Validate username to be all letters and within 12 characters
@@ -138,14 +139,24 @@ def username_validation(username):
     else: 
         return True
 
+
 def get_username(wrong_guesses_left, seconds):
     """
-    getting and validating username and add it to the scoreboard
+    getting and validating username and add it with the time
+    and wrong guesses left to the scoreboard 
     """
     username_to_validate = False
     while username_to_validate is False:
         username = input("Enter username (max. 12 letters): ")
         username_to_validate = username_validation(username)
+        user_data_row = []
+        user_data_row.append(username)
+        user_data_row.append(wrong_guesses_left)
+        user_data_row.append(seconds)
+        print(user_data_row)
+        scoreboard_worksheet = SHEET.worksheet("scoreboard")
+        scoreboard_worksheet.append_row(user_data_row)
+
 
 def main_menu():
     """
