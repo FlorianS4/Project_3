@@ -5,6 +5,7 @@ import random
 import os
 import time
 from hangman_stages import HANGMAN_STAGES
+import pandas as pd
 
 # width for characters
 term_width = 80
@@ -156,6 +157,26 @@ def get_username(wrong_guesses_left, seconds):
         print(user_data_row)
         scoreboard_worksheet = SHEET.worksheet("scoreboard")
         scoreboard_worksheet.append_row(user_data_row)
+        scoreboard_update(scoreboard_worksheet)
+
+
+def scoreboard_update(worksheet):
+    """
+    sorts scoreboard with fastest time on number 1
+    """
+    user_data_score = worksheet.get_all_values()
+    columns = user_data_score[0]
+    user_score = user_data_score[1:]
+    user_score_line = pd.DataFrame(user_score, columns = columns)
+    pd.set_option("display.colheader_justify", "center")
+    user_score_line = user_score_line.sort_values(
+        by = [ "TIME"],
+        ascending = [False]
+    )
+    user_score_line = user_score_line.reset_index(drop = True)
+    user_score_line.index = user_score_line.index + 1
+
+    print(user_score_line)
 
 
 def main_menu():
@@ -165,7 +186,7 @@ def main_menu():
     """
     print("[1] Play Hangman")
     print("[2] Game Instructions")
-    print("[3] maybe i add something later")
+    print("[3] Scoreboard")
     print("[4] Exit the program")
     choice = int(input("Enter your option: "))
 
@@ -179,8 +200,11 @@ def main_menu():
             # Opens Game Instructions
             print("You choose 2, Game Instructions will show in a few seconds....")
         elif choice == 3:
-            # maybe there is a 3th Option :D
-            print("Nothing to see in choice 3, maybe later..")
+            # opens Scoreboard
+            print("Scoreboard is opening...")
+            scoreboard_worksheet = SHEET.worksheet("scoreboard")
+            scoreboard_update(scoreboard_worksheet)
+            main_menu()
         elif choice == 4:
             exit()
         else: 
