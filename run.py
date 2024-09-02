@@ -4,6 +4,7 @@ from google.oauth2.service_account import Credentials
 import random
 import os
 import time
+import math
 from hangman_stages import HANGMAN_STAGES
 import pandas as pd
 
@@ -118,7 +119,8 @@ def update_hint(guess, hint, wrong_guesses_left):
        seconds = timer_end - timer_start
        seconds = round(seconds, 2)
        print(seconds)
-       get_username(wrong_guesses_left, seconds)
+       calculate_score(wrong_guesses_left, seconds)
+       get_username(wrong_guesses_left, seconds, score)
        print("Game Over! You won, returning to Main Menu for now")
        main_menu()
 
@@ -141,7 +143,7 @@ def username_validation(username):
         return True
 
 
-def get_username(wrong_guesses_left, seconds):
+def get_username(wrong_guesses_left, seconds, score):
     """
     getting and validating username and add it with the time
     and wrong guesses left to the scoreboard 
@@ -154,10 +156,21 @@ def get_username(wrong_guesses_left, seconds):
         user_data_row.append(username)
         user_data_row.append(wrong_guesses_left)
         user_data_row.append(seconds)
+        user_data_row.append(score)
         print(user_data_row)
         scoreboard_worksheet = SHEET.worksheet("scoreboard")
         scoreboard_worksheet.append_row(user_data_row)
         scoreboard_update(scoreboard_worksheet)
+
+
+
+def calculate_score(wrong_guesses_left, seconds):
+    """
+    calculates a score, based on the word lenght, guesses left and time
+    """
+    global score
+    score = math.ceil((len(word) * 1000) + (wrong_guesses_left * 1000) / seconds)
+    print(score)
 
 
 def scoreboard_update(worksheet):
@@ -170,8 +183,8 @@ def scoreboard_update(worksheet):
     user_score_line = pd.DataFrame(user_score, columns = columns)
     pd.set_option("display.colheader_justify", "center")
     user_score_line = user_score_line.sort_values(
-        by = [ "TIME"],
-        ascending = [False]
+        by = [ "SCORE"],
+        ascending = [True]
     )
     user_score_line = user_score_line.reset_index(drop = True)
     user_score_line.index = user_score_line.index + 1
