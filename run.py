@@ -26,12 +26,50 @@ WORD_SHEET = SHEET.worksheet("words")
 
 def get_word():
     """
-    Picks a random word form Google sheet.
+    Picks a random word from the category the users choose
+    gets the word from Google sheets
     """
-    
-    word_list = WORD_SHEET.col_values(1)
     global word, hint
-    word = random.choice(word_list)
+
+    print("1: MOVIES")
+    print("2: ANIMALS")
+    print("3: VIDEO GAMES")
+    print("4: SPORTS")
+    print("5: FRUITS")
+    category = input("Select a category: ")
+
+    # valid_choices = ["1", "2", "3", "4". "5"]
+        #if category not in valid_choices:
+            #print(f"No category found, try again.")
+            #get_word()
+    if category == "1":
+        word_list = WORD_SHEET.col_values(1)
+        word = random.choice(word_list)
+        input_user()            
+    elif category == "2":
+        word_list = WORD_SHEET.col_values(2)
+        word = random.choice(word_list)
+        input_user()
+    elif category == "3":
+        word_list = WORD_SHEET.col_values(3)
+        word = random.choice(word_list)
+        input_user()
+    elif category == "4":
+        word_list = WORD_SHEET.col_values(4)
+        word = random.choice(word_list)
+        input_user()
+    elif category == "5":
+        word_list = WORD_SHEET.col_values(5)
+        word = random.choice(word_list)
+        input_user()
+    else:
+        print("No Category found, choose between 1 - 5")
+        get_word()
+
+    print("Loading Game")
+    
+    #word_list = WORD_SHEET.col_values(1)
+    
     
 
 
@@ -208,7 +246,7 @@ def main_menu():
             # Opens Hangman Game
             print("You choose 1, Game will start shortly....")
             get_word()
-            input_user()
+            #input_user()
         elif choice == 2:
             # Opens Game Instructions
             print("You choose 2, Game Instructions will show in a few seconds....")
