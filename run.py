@@ -31,18 +31,18 @@ def get_word():
     """
     global word, hint
 
-    print("1: MOVIES")
-    print("2: ANIMALS")
-    print("3: VIDEO GAMES")
-    print("4: SPORTS")
-    print("5: FRUITS")
-    category = input("Select a category: ")
+    print("[1] MOVIES")
+    print("[2] ANIMALS")
+    print("[3] VIDEO GAMES")
+    print("[4] SPORTS")
+    print("[5] FRUITS")
 
+    validator = False
+    while validator == False:
+        category = input("Select a category: ")
+        category_choices = ["1", "2", "3", "4","5"]
+        validator = to_validate(category, category_choices)
    
-    # valid_choices = ["1", "2", "3", "4". "5"]
-        #if category not in valid_choices:
-            #print(f"No category found, try again.")
-            #get_word()
     if category == "1":
         word_list = WORD_SHEET.col_values(1)
         word = random.choice(word_list)
@@ -63,19 +63,9 @@ def get_word():
         word_list = WORD_SHEET.col_values(5)
         word = random.choice(word_list)
         input_user()
-    else:
-        print("No Category found, choose between 1 - 5")
-        get_word()
 
     print("Loading Game")
-    
-    #word_list = WORD_SHEET.col_values(1)
-    
-    
 
-
- #for x in word:
-        #print("_", end = " ")
 
 def input_user():
     """
