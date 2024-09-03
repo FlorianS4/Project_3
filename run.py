@@ -38,6 +38,7 @@ def get_word():
     print("5: FRUITS")
     category = input("Select a category: ")
 
+   
     # valid_choices = ["1", "2", "3", "4". "5"]
         #if category not in valid_choices:
             #print(f"No category found, try again.")
@@ -230,6 +231,20 @@ def scoreboard_update(worksheet):
     print(user_score_line.head(10))
 
 
+def to_validate(choice, valid_list):
+    """
+    validate input from user againts existing list of choices
+    """
+    if choice in valid_list:
+        validator = True
+        return validator
+    else:
+        validator = False
+        print("Choice is not valid, please try again!")
+        return validator
+        
+
+
 def main_menu():
     """
     Main Menu function
@@ -239,46 +254,38 @@ def main_menu():
     print("[2] Game Instructions")
     print("[3] Scoreboard")
     print("[4] Exit the program")
-    choice = int(input("Enter your option: "))
 
-    while choice != 0:
-        if choice == 1:
-            # Opens Hangman Game
-            print("You choose 1, Game will start shortly....")
-            get_word()
-            #input_user()
-        elif choice == 2:
-            # Opens Game Instructions
-            print("You choose 2, Game Instructions will show in a few seconds....")
-        elif choice == 3:
-            # opens Scoreboard
-            print("Scoreboard is opening...")
-            scoreboard_worksheet = SHEET.worksheet("scoreboard")
-            scoreboard_update(scoreboard_worksheet)
-            main_menu()
-        elif choice == 4:
-            exit()
-        else: 
-            print("choice not available")
+    validator = False
+    while validator == False:
+        choice = input("Enter your option: ")
+        menu_choices = ["1", "2", "3", "4"]
+        validator = to_validate(choice, menu_choices)
+        
+    if choice == "1":
+        # Opens Hangman Game
+        print("You choose 1, Game will start shortly....")
+        get_word()
+        #input_user()
+    elif choice == "2":
+        # Opens Game Instructions
+        print("You choose 2, Game Instructions will show in a few seconds....")
+    elif choice == "3":
+        # opens Scoreboard
+        print("Scoreboard is opening...")
+        scoreboard_worksheet = SHEET.worksheet("scoreboard")
+        scoreboard_update(scoreboard_worksheet)
+        main_menu()
+    elif choice == "4":
+        exit()
     
     print()
     main_menu()
     choice = int(input("Enter your option: "))
 
-print("Thanks for playing the game")
+
 
 
 main_menu()
-
-
-"""
-valid_choices = ["1", "2", "3"]
-
-while choice not in valid_choices:
-    main_menu()
-
-    tried with validator - doesn't work at the moment, will comeback to it later
-"""
 
 
 """
