@@ -189,7 +189,7 @@ def scoreboard_update(worksheet):
     user_score_line = user_score_line.reset_index(drop = True)
     user_score_line.index = user_score_line.index + 1
 
-    print(user_score_line)
+    print(user_score_line.head(10))
 
 
 def main_menu():
