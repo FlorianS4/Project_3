@@ -232,7 +232,42 @@ def to_validate(choice, valid_list):
         validator = False
         print("Choice is not valid, please try again!")
         return validator
-        
+
+
+def get_instructions_for_game():
+    """
+    Instructions on how to play the game and how to navigate it
+    """
+
+    os.system("clear")
+    instructions = r""" 
+            _______________________________________________________
+            /\                                                      \
+        (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
+            \/''''''''''''''''''''''''''''''''''''''''''''''''''''''/
+            (                   How to play                        (
+            )                                                      )
+            (    Start the game with Option 1 for Hangman.         (
+            )       Choose a category of your liking.              )
+
+            (    Guess a word of the category of your choosing.    (
+            )    Each blank represents a character of the word.    )
+            (    If guessed correctly the blank will disapear and  (
+            )        the guessed letter will be filled in.         )
+
+            (        You have 7 lives or guesses per word.         (
+            )  For every wrong guess the hangman starts to build.  )
+            (   The game ends in two ways, either you guessed the  (
+            )      word correctly or the hangman is finished.      )
+
+            (    After you guessed correctly you can enter a       (
+            )    username, so your score can be added to the       )
+            (                    leaderboard.                      (
+            /\''''''''''''''''''''''''''''''''''''''''''''''''''''''\    
+        (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
+            \/______________________________________________________/"""
+    print(instructions + "\n")
+    main_menu()    
 
 
 def main_menu():
@@ -259,6 +294,7 @@ def main_menu():
     elif choice == "2":
         # Opens Game Instructions
         print("You choose 2, Game Instructions will show in a few seconds....")
+        get_instructions_for_game()
     elif choice == "3":
         # opens Scoreboard
         print("Scoreboard is opening...")
