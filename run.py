@@ -35,7 +35,7 @@ def get_word():
     print("[2] ANIMALS")
     print("[3] VIDEO GAMES")
     print("[4] SPORTS")
-    print("[5] FRUITS")
+    print("[5] FRUITS \n")
 
     validator = False
     while validator == False:
@@ -64,7 +64,7 @@ def get_word():
         word = random.choice(word_list)
         input_user()
 
-    print("Loading Game")
+    print("Loading Game \n")
 
 
 def input_user():
@@ -89,15 +89,15 @@ def input_user():
         print(hint)
         letters_guessed_str = " ".join(letters_guessed)
 
-        print(f"Guessed letters: {letters_guessed_str} and guess left {wrong_guesses_left}")
-        guess = input("Guess a letter: ").upper()
+        print(f"Guessed letters: {letters_guessed_str} and guess left {wrong_guesses_left}\n")
+        guess = input("Guess a letter: \n").upper()
 
         if guess == "HELP":
             print(word)
         elif guess in letters_guessed:
-            print("Letter already guessed, try another")
+            print("Letter already guessed, try another\n")
         elif not guess.isalpha() or len(guess) > 1:
-            print("Guess not vialble, guess again")
+            print("Guess not vialble, guess again\n")
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
@@ -109,19 +109,18 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     Validates if letter is in word
     """
     if guess in word:
-        print("Guess was correct!")
+        print("Guess was correct!\n")
         hint = update_hint(guess, hint, wrong_guesses_left)
     elif guess not in word and hangman_index == 6:
         wrong_guesses_left -= 1
         print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
         game_over = True
-        print("Game Over! Returning to main menu")
+        print("Game Over! Returning to main menu\n")
         timer_end = time.time()
         main_menu()
     else:
-        print("Incorrect guess, try another letter")
-        print(wrong_guesses_left)
+        print("Incorrect guess, try another letter\n")
         wrong_guesses_left -= 1
         print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
@@ -147,10 +146,9 @@ def update_hint(guess, hint, wrong_guesses_left):
        timer_end = time.time()
        seconds = timer_end - timer_start
        seconds = round(seconds, 2)
-       print(seconds)
        calculate_score(wrong_guesses_left, seconds)
        get_username(wrong_guesses_left, seconds, score)
-       print("Game Over! You won, returning to Main Menu for now")
+       print("Game Over! You won, returning to Main Menu for now\n")
        main_menu()
 
     return hint
@@ -179,7 +177,7 @@ def get_username(wrong_guesses_left, seconds, score):
     """
     username_to_validate = False
     while username_to_validate is False:
-        username = input("Enter username (max. 12 letters): ")
+        username = input("Enter username (max. 12 letters): \n")
         username_to_validate = username_validation(username)
         user_data_row = []
         user_data_row.append(username)
@@ -230,7 +228,7 @@ def to_validate(choice, valid_list):
         return validator
     else:
         validator = False
-        print("Choice is not valid, please try again!")
+        print("Choice is not valid, please try again!\n")
         return validator
 
 
@@ -297,7 +295,7 @@ def main_menu():
     print("[1] Play Hangman")
     print("[2] Game Instructions")
     print("[3] Scoreboard")
-    print("[4] Exit the program")
+    print("[4] Exit the program\n")
 
     validator = False
     while validator == False:
@@ -309,7 +307,6 @@ def main_menu():
         # Opens Hangman Game
         print("You choose 1, Game will start shortly....")
         get_word()
-        #input_user()
     elif choice == "2":
         # Opens Game Instructions
         print("You choose 2, Game Instructions will show in a few seconds....")
@@ -328,21 +325,4 @@ def main_menu():
     choice = int(input("Enter your option: "))
 
 
-
-
 main_menu()
-
-
-
-"""
-get_word()
-print(get_word())
-"""
-
-"""
-input_user()
-print(input(user))
-"""
-
-main_menu()
-print(main_menu())
