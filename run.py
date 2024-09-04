@@ -234,11 +234,30 @@ def to_validate(choice, valid_list):
         return validator
 
 
+def back_to_menu():
+    """
+    functions to get the user back to the menu, or exit the program
+    """
+    print("[1] Back to main menu")
+    print("[2] Exit the program \n")
+
+    validator = False
+    while validator == False:
+        choice = input("Enter your option: ")
+        back_to_menu_choices = ["1", "2"]
+        validator = to_validate(choice, back_to_menu_choices)
+
+    if choice == "1":
+        os.system("clear")
+        main_menu()        
+    elif choice == "2":
+        exit()
+
+
 def get_instructions_for_game():
     """
     Instructions on how to play the game and how to navigate it
     """
-
     os.system("clear")
     instructions = r""" 
             _______________________________________________________
@@ -267,7 +286,7 @@ def get_instructions_for_game():
         (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
             \/______________________________________________________/"""
     print(instructions + "\n")
-    main_menu()    
+    back_to_menu()
 
 
 def main_menu():
@@ -312,6 +331,7 @@ def main_menu():
 
 
 main_menu()
+
 
 
 """
