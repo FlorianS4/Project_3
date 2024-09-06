@@ -7,6 +7,8 @@ import time
 import math
 from hangman_stages import HANGMAN_STAGES
 import pandas as pd
+import colorama
+from colorama import Fore, Back
 
 # width for characters
 term_width = 80
@@ -143,9 +145,9 @@ def input_user():
         if guess == "HELP":
             print(word)
         elif guess in letters_guessed:
-            print("Letter already guessed, try another\n")
+            print(Fore.RED + "Letter already guessed, try another"+ Fore.RESET + "\n")
         elif not guess.isalpha() or len(guess) > 1:
-            print("Guess not vialble, guess again\n")
+            print(Fore.RED + "Guess not vialble, guess again" + Fore.RESET + "\n")
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
@@ -157,7 +159,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     Validates if letter is in word
     """
     if guess in word:
-        print("Guess was correct!\n")
+        print(Fore.GREEN + "Guess was correct!" + Fore.RESET + "\n")
         hint = update_hint(guess, hint, wrong_guesses_left)
     elif guess not in word and hangman_index == 6:
         wrong_guesses_left -= 1
@@ -169,7 +171,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         timer_end = time.time()
         main_menu()
     else:
-        print("Incorrect guess, try another letter\n")
+        print(Fore.RED + "Incorrect guess, try another letter" + Fore.RESET + "\n")
         wrong_guesses_left -= 1
         print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
@@ -214,7 +216,7 @@ def username_validation(username):
                 f"Your input {username}"
             )
     except ValueError as e:
-        print(f"Invalid username: {e} please try again.\nYou need to enter max 12 letter/s only.\n")
+        print(Fore.RED + f"Invalid username: {e} please try again.\nYou need to enter max 12 letter/s only." + Fore.RESET + "\n")
         return False
     else: 
         return True
@@ -279,7 +281,7 @@ def to_validate(choice, valid_list):
         return validator
     else:
         validator = False
-        print("Choice is not valid, please try again!\n")
+        print(Fore.RED + "Choice is not valid, please try again!" + Fore.RESET + "\n")
         return validator
 
 
