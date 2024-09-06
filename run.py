@@ -246,13 +246,14 @@ def calculate_score(wrong_guesses_left, seconds):
     calculates a score, based on the word lenght, guesses left and time
     """
     global score
-    score = math.ceil((len(word) * 100) + (wrong_guesses_left * 100) / seconds)
+    score = math.ceil(seconds * 100 / (len(word)) + (wrong_guesses_left))
     print(score)
 
 
 def scoreboard_update(worksheet):
     """
-    sorts scoreboard with fastest time on number 1
+    sorts scoreboard, with the lowest score on top
+    
     """
     user_data_score = worksheet.get_all_values()
     columns = user_data_score[0]
@@ -330,6 +331,9 @@ def get_instructions_for_game():
             (    After you guessed correctly you can enter a       (
             )    username, so your score can be added to the       )
             (                    leaderboard.                      (
+            (    Your score is made up out of how quick you        (
+            )    answer, how long the word is and how many         )
+            (               wrong guesses you have.                (
             /\''''''''''''''''''''''''''''''''''''''''''''''''''''''\    
         (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
             \/______________________________________________________/"""
