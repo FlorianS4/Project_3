@@ -24,6 +24,54 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("words_sheet")
 WORD_SHEET = SHEET.worksheet("words")
 
+# ASCII Art from https://www.asciiart.eu/text-to-ascii-art
+
+HEADER_GAME = r"""
+     _   _   ___   _   _ _____ ___  ___  ___   _   _ 
+    | | | | / _ \ | \ | |  __ \|  \/  | / _ \ | \ | |
+    | |_| |/ /_\ \|  \| | |  \/| .  . |/ /_\ \|  \| |
+    |  _  ||  _  || . ` | | __ | |\/| ||  _  || . ` |
+    | | | || | | || |\  | |_\ \| |  | || | | || |\  |
+    \_| |_/\_| |_/\_| \_/\____/\_|  |_/\_| |_/\_| \_/      
+    """
+
+HEADER_WELCOME = r"""
+    _    _ _____ _     _____ ________  ___ _____   _____ _____  
+    | |  | |  ___| |   /  __ \  _  |  \/  ||  ___| |_   _|  _  | 
+    | |  | | |__ | |   | /  \/ | | | .  . || |__     | | | | | | 
+    | |/\| |  __|| |   | |   | | | | |\/| ||  __|    | | | | | | 
+    \  /\  / |___| |___| \__/\ \_/ / |  | || |___    | | \ \_/ / 
+    \/  \/\____/\_____/\____/\___/\_|  |_/\____/    \_/  \___/  
+                                                                
+                                                                
+        _____ _   _  _____   _____   ___  ___  ___ _____        
+        |_   _| | | ||  ___| |  __ \ / _ \ |  \/  ||  ___|       
+        | | | |_| || |__   | |  \// /_\ \| .  . || |__         
+        | | |  _  ||  __|  | | __ |  _  || |\/| ||  __|        
+        | | | | | || |___  | |_\ \| | | || |  | || |___        
+        \_/ \_| |_/\____/   \____/\_| |_/\_|  |_/\____/        
+        """
+
+
+HEADER_GAME_OVER = r"""
+    _____   ___  ___  ___ _____   _____  _   _ ___________ 
+    |  __ \ / _ \ |  \/  ||  ___| |  _  || | | |  ___| ___ \
+    | |  \// /_\ \| .  . || |__   | | | || | | | |__ | |_/ /
+    | | __ |  _  || |\/| ||  __|  | | | || | | |  __||    / 
+    | |_\ \| | | || |  | || |___  \ \_/ /\ \_/ / |___| |\ \ 
+    \____/\_| |_/\_|  |_/\____/   \___/  \___/\____/\_| \_|
+    """
+
+
+HEADER_GAME_WON = r"""
+    __   _______ _   _   _    _  _____ _   _ 
+    \ \ / /  _  | | | | | |  | ||  _  | \ | |
+     \ V /| | | | | | | | |  | || | | |  \| |
+      \ / | | | | | | | | |/\| || | | | . ` |
+      | | \ \_/ / |_| | \  /\  /\ \_/ / |\  |
+      \_/  \___/ \___/   \/  \/  \___/\_| \_/
+    """
+
 def get_word():
     """
     Picks a random word from the category the users choose
@@ -116,6 +164,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
         game_over = True
+        print(HEADER_GAME_OVER)
         print("Game Over! Returning to main menu\n")
         timer_end = time.time()
         main_menu()
@@ -148,6 +197,7 @@ def update_hint(guess, hint, wrong_guesses_left):
        seconds = round(seconds, 2)
        calculate_score(wrong_guesses_left, seconds)
        get_username(wrong_guesses_left, seconds, score)
+       print(HEADER_GAME_WON)
        print("Game Over! You won, returning to Main Menu for now\n")
        main_menu()
 
@@ -196,7 +246,7 @@ def calculate_score(wrong_guesses_left, seconds):
     calculates a score, based on the word lenght, guesses left and time
     """
     global score
-    score = math.ceil((len(word) * 1000) + (wrong_guesses_left * 1000) / seconds)
+    score = math.ceil((len(word) * 100) + (wrong_guesses_left * 100) / seconds)
     print(score)
 
 
@@ -292,6 +342,8 @@ def main_menu():
     Main Menu function
     Takes user input and runs user choice
     """
+    print(HEADER_GAME)
+    print(HEADER_WELCOME)
     print("[1] Play Hangman")
     print("[2] Game Instructions")
     print("[3] Scoreboard")
@@ -316,6 +368,7 @@ def main_menu():
         print("Scoreboard is opening...")
         scoreboard_worksheet = SHEET.worksheet("scoreboard")
         scoreboard_update(scoreboard_worksheet)
+        print("\n")
         main_menu()
     elif choice == "4":
         exit()
