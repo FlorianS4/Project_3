@@ -43,7 +43,7 @@ HEADER_WELCOME = r"""
     | |  | | |__ | |   | /  \/ | | | .  . || |__     | | | | | | 
     | |/\| |  __|| |   | |   | | | | |\/| ||  __|    | | | | | | 
     \  /\  / |___| |___| \__/\ \_/ / |  | || |___    | | \ \_/ / 
-    \/  \/\____/\_____/\____/\___/\_|  |_/\____/    \_/  \___/  
+     \/  \/\____/\_____/\____/\___/\_|  |_/\____/    \_/  \___/  
                                                                 
                                                                 
         _____ _   _  _____   _____   ___  ___  ___ _____        
@@ -293,9 +293,10 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         print("     " + HANGMAN_STAGES[hangman_index])
         game_over = True
         print(HEADER_GAME_OVER)
-        print("Game Over! Returning to main menu\n")
+        print("The word you were looking for was" + Fore.MAGENTA + f" {word}" + Fore.RESET + ".\n")
+        print("Game Over! Return to main menu or exit the program\n")
         timer_end = time.time()
-        main_menu()
+        back_to_menu()
     else:
         print(Fore.RED + "Incorrect guess, try another letter" + Fore.RESET + "\n")
         wrong_guesses_left -= 1
