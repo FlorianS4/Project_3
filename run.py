@@ -74,6 +74,130 @@ HEADER_GAME_WON = r"""
       \_/  \___/ \___/   \/  \/  \___/\_| \_/
     """
 
+# Main Menu
+def main_menu():
+    """
+    Main Menu function
+    Takes user input and runs user choice
+    """
+    print(HEADER_GAME)
+    print(HEADER_WELCOME)
+    print("[1] Play Hangman")
+    print("[2] Game Instructions")
+    print("[3] Scoreboard")
+    print("[4] Exit the program\n")
+
+    validator = False
+    while validator == False:
+        choice = input("Enter your option: ")
+        menu_choices = ["1", "2", "3", "4"]
+        validator = to_validate(choice, menu_choices)
+        
+    if choice == "1":
+        # Opens Hangman Game
+        print("You choose 1, Game will start shortly....")
+        get_word()
+    elif choice == "2":
+        # Opens Game Instructions
+        print("You choose 2, Game Instructions will show in a few seconds....")
+        get_instructions_for_game()
+    elif choice == "3":
+        # opens Scoreboard
+        print("Scoreboard is opening...")
+        scoreboard_worksheet = SHEET.worksheet("scoreboard")
+        scoreboard_update(scoreboard_worksheet)
+        print("\n")
+        back_to_menu()
+    elif choice == "4":
+        exit()
+    
+    print()
+    main_menu()
+    choice = int(input("Enter your option: "))
+
+
+# Instructions for Game
+def get_instructions_for_game():
+    """
+    Instructions on how to play the game and how to navigate it
+    """
+    os.system("clear")
+    instructions = r""" 
+            _______________________________________________________
+            /\                                                      \
+        (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
+            \/''''''''''''''''''''''''''''''''''''''''''''''''''''''/
+            (                   How to play                        (
+            )                                                      )
+            (    Start the game with Option 1 for Hangman.         (
+            )       Choose a category of your liking.              )
+
+            (    Guess a word of the category of your choosing.    (
+            )    Each blank represents a character of the word.    )
+            (    If guessed correctly the blank will disapear and  (
+            )        the guessed letter will be filled in.         )
+
+            (        You have 7 lives or guesses per word.         (
+            )  For every wrong guess the hangman starts to build.  )
+            (   The game ends in two ways, either you guessed the  (
+            )      word correctly or the hangman is finished.      )
+
+            (    After you guessed correctly you can enter a       (
+            )    username, so your score can be added to the       )
+            (                    leaderboard.                      (
+            (    Your score is made up out of how quick you        (
+            )    answer, how long the word is and how many         )
+            (               wrong guesses you have.                (
+            /\''''''''''''''''''''''''''''''''''''''''''''''''''''''\    
+        (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
+            \/______________________________________________________/"""
+    print(instructions + "\n")
+    back_to_menu()
+
+
+# Scoreboard
+def scoreboard_update(worksheet):
+    """
+    sorts scoreboard, with the lowest score on top
+    
+    """
+    user_data_score = worksheet.get_all_values()
+    columns = user_data_score[0]
+    user_score = user_data_score[1:]
+    user_score_line = pd.DataFrame(user_score, columns = columns)
+    pd.set_option("display.colheader_justify", "center")
+    user_score_line = user_score_line.sort_values(
+        by = [ "SCORE"],
+        ascending = [True]
+    )
+    user_score_line = user_score_line.reset_index(drop = True)
+    user_score_line.index = user_score_line.index + 1
+
+    print(user_score_line.head(10))
+
+
+
+# Back to Menu function
+def back_to_menu():
+    """
+    functions to get the user back to the menu, or exit the program
+    """
+    print("[1] Back to main menu")
+    print("[2] Exit the program \n")
+
+    validator = False
+    while validator == False:
+        choice = input("Enter your option: ")
+        back_to_menu_choices = ["1", "2"]
+        validator = to_validate(choice, back_to_menu_choices)
+
+    if choice == "1":
+        os.system("clear")
+        main_menu()        
+    elif choice == "2":
+        exit()
+
+# game function
 def get_word():
     """
     Picks a random word from the category the users choose
@@ -117,6 +241,7 @@ def get_word():
     print("Loading Game \n")
 
 
+# input function
 def input_user():
     """
     takes input from user
@@ -154,6 +279,7 @@ def input_user():
             wrong_guesses_left, hangman_index, hint, game_over  = check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over)
             
 
+# guess function
 def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     """
     Validates if letter is in word
@@ -179,6 +305,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     return wrong_guesses_left, hangman_index, hint, game_over
 
 
+# update hint function
 def update_hint(guess, hint, wrong_guesses_left):
     """
     Adds a correct guess and updates hint
@@ -200,12 +327,13 @@ def update_hint(guess, hint, wrong_guesses_left):
        calculate_score(wrong_guesses_left, seconds)
        get_username(wrong_guesses_left, seconds, score)
        print(HEADER_GAME_WON)
-       print("Game Over! You won, returning to Main Menu for now\n")
-       main_menu()
+       print("Game Over! You won, congratulation!\n")
+       back_to_menu()
 
     return hint
 
 
+# username function for after game
 def username_validation(username):
     """
     Validate username to be all letters and within 12 characters
@@ -222,6 +350,7 @@ def username_validation(username):
         return True
 
 
+# get username for scoreboard add
 def get_username(wrong_guesses_left, seconds, score):
     """
     getting and validating username and add it with the time
@@ -242,7 +371,7 @@ def get_username(wrong_guesses_left, seconds, score):
         scoreboard_update(scoreboard_worksheet)
 
 
-
+# calculate score function
 def calculate_score(wrong_guesses_left, seconds):
     """
     calculates a score, based on the word lenght, guesses left and time
@@ -252,26 +381,7 @@ def calculate_score(wrong_guesses_left, seconds):
     print(score)
 
 
-def scoreboard_update(worksheet):
-    """
-    sorts scoreboard, with the lowest score on top
-    
-    """
-    user_data_score = worksheet.get_all_values()
-    columns = user_data_score[0]
-    user_score = user_data_score[1:]
-    user_score_line = pd.DataFrame(user_score, columns = columns)
-    pd.set_option("display.colheader_justify", "center")
-    user_score_line = user_score_line.sort_values(
-        by = [ "SCORE"],
-        ascending = [True]
-    )
-    user_score_line = user_score_line.reset_index(drop = True)
-    user_score_line.index = user_score_line.index + 1
-
-    print(user_score_line.head(10))
-
-
+# validation for input
 def to_validate(choice, valid_list):
     """
     validate input from user againts existing list of choices
@@ -283,105 +393,6 @@ def to_validate(choice, valid_list):
         validator = False
         print(Fore.RED + "Choice is not valid, please try again!" + Fore.RESET + "\n")
         return validator
-
-
-def back_to_menu():
-    """
-    functions to get the user back to the menu, or exit the program
-    """
-    print("[1] Back to main menu")
-    print("[2] Exit the program \n")
-
-    validator = False
-    while validator == False:
-        choice = input("Enter your option: ")
-        back_to_menu_choices = ["1", "2"]
-        validator = to_validate(choice, back_to_menu_choices)
-
-    if choice == "1":
-        os.system("clear")
-        main_menu()        
-    elif choice == "2":
-        exit()
-
-
-def get_instructions_for_game():
-    """
-    Instructions on how to play the game and how to navigate it
-    """
-    os.system("clear")
-    instructions = r""" 
-            _______________________________________________________
-            /\                                                      \
-        (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
-            \/''''''''''''''''''''''''''''''''''''''''''''''''''''''/
-            (                   How to play                        (
-            )                                                      )
-            (    Start the game with Option 1 for Hangman.         (
-            )       Choose a category of your liking.              )
-
-            (    Guess a word of the category of your choosing.    (
-            )    Each blank represents a character of the word.    )
-            (    If guessed correctly the blank will disapear and  (
-            )        the guessed letter will be filled in.         )
-
-            (        You have 7 lives or guesses per word.         (
-            )  For every wrong guess the hangman starts to build.  )
-            (   The game ends in two ways, either you guessed the  (
-            )      word correctly or the hangman is finished.      )
-
-            (    After you guessed correctly you can enter a       (
-            )    username, so your score can be added to the       )
-            (                    leaderboard.                      (
-            (    Your score is made up out of how quick you        (
-            )    answer, how long the word is and how many         )
-            (               wrong guesses you have.                (
-            /\''''''''''''''''''''''''''''''''''''''''''''''''''''''\    
-        (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
-            \/______________________________________________________/"""
-    print(instructions + "\n")
-    back_to_menu()
-
-
-def main_menu():
-    """
-    Main Menu function
-    Takes user input and runs user choice
-    """
-    print(HEADER_GAME)
-    print(HEADER_WELCOME)
-    print("[1] Play Hangman")
-    print("[2] Game Instructions")
-    print("[3] Scoreboard")
-    print("[4] Exit the program\n")
-
-    validator = False
-    while validator == False:
-        choice = input("Enter your option: ")
-        menu_choices = ["1", "2", "3", "4"]
-        validator = to_validate(choice, menu_choices)
-        
-    if choice == "1":
-        # Opens Hangman Game
-        print("You choose 1, Game will start shortly....")
-        get_word()
-    elif choice == "2":
-        # Opens Game Instructions
-        print("You choose 2, Game Instructions will show in a few seconds....")
-        get_instructions_for_game()
-    elif choice == "3":
-        # opens Scoreboard
-        print("Scoreboard is opening...")
-        scoreboard_worksheet = SHEET.worksheet("scoreboard")
-        scoreboard_update(scoreboard_worksheet)
-        print("\n")
-        main_menu()
-    elif choice == "4":
-        exit()
-    
-    print()
-    main_menu()
-    choice = int(input("Enter your option: "))
 
 
 main_menu()
