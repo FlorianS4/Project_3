@@ -30,7 +30,8 @@
 - [Testing](#testing)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
-    - [Programs Used - Frameworks - Libraries](#programs-used---frameworks---libraries)
+    - [Programs Used - Frameworks - Libraries](#programs-used-frameworks-libraries)
+    - [Python Libraries](#python-libraries)
 - [Deployment](#deployment)
     - [Running the project locally](#running-the-project-locally)
 - [Credits](#credits)
@@ -111,6 +112,24 @@ Python, CSS
 
 ### Programs Used - Frameworks - Libraries
 
+- [GitHub](https://GitHub.com/) - for version control and hosting.
+- [Gitpod](https://gitpod.io/) - IDE to develop the website.
+- [Am I Responsive](https://ui.dev/amiresponsive) to test responsiveness.
+- [Heroku](https://dashboard.heroku.com/) - Used to deploy the project.
+- [Lucid Chart](https://www.lucidchart.com/pages/) - Used to create a flow chart.
+- [PEP8 Validator](https://pep8ci.herokuapp.com/) - Used to validate the Python code.
+- Code Institute's Gitpod Template to generate IDE workspace.
+
+### Python Libraries
+
+- [random](https://docs.python.org/3/library/random.html) - Used to randomly select a word for the game.
+- [os](https://docs.python.org/3/library/os.html) - Used to clear the terminal.
+- [time](https://docs.python.org/3/library/time.html) - Used to start and stop the timer for the game.
+- [math](https://docs.python.org/3/library/math.html) - Used to round down numbers and calculate a score.
+- [colorama](https://pypi.org/project/colorama/) - Used for coloring of error messages.
+- [pandas](https://pandas.pydata.org/) - Used to sort scoreboard and display it.
+- [gspread](https://docs.gspread.org/en/latest/) - Used to access data in a Google Sheet and update them.
+- [google.oauth2.service_account](https://pypi.org/project/python-oauth2/) - Used for authentification to access the Google Cloud.
 
 ## Deployment
 This site was deployed to GitHub pages. Instructions:
