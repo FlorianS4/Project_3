@@ -7,20 +7,26 @@
         - [First Time User](#first-time-user)
         - [Returning User](#returning-user)
         - [Frequent User](#frequent-user)
-- [Design](#design)
-    - [Typography](#typography)
-    - [Imagery](#imagery)
-    - [Color Scheme](#color-scheme)
-- [Wireframes](#wireframes)
+- [Design and Flow](#design-and-flow)
+    - [Flow Chart](#flow-chart)
+    - [Headings](#headings)
+    - [Mock Terminal](#moch-terminal)
+    - [Heroku](#heroku)
+- [Google Sheet](#google-sheet)
 - [Features](#features)
-    - [Favicon](#favicon)
-    - [Main Page](#main-page)
-    - [Game Instruction Pop-up](#game-instruction-pop-up)
-    - [Game Pop-up](#game-pop-up)
-    - [Memory Game](#memory-game)
-    - [End of Game Screen](#end-of-game-screen)
+    - [Main Menu](#main-menu)
+    - [Instructions](#instructions)
     - [Scoreboard](#scoreboard)
-    - [404 Page](#404-page)
+- [The Game](#the-game)
+    - [Category Selection](#category-selection)
+    - [The Game Word](#the-game-word)
+    - [Updating Hint](#updating-hint)
+    - [Colored Error Messages](#colored-error-messages)
+    - [Game Over Conditions](#game-over-conditions)
+    - [Game Won Conditions](#game-won-conditions)
+    - [Score calculation](#score-calculation)
+    - [Scoreboard Update](#scoreboard-update)
+    - [End of Game](#end-of-game)
 - [Testing](#testing)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
@@ -55,48 +61,53 @@
 #### Frequent User
 - I want to be able to see my score to see how I am performing and to beat my old highscore.
 
-## Design
-### Typography
+## Design and Flow
 
-### Imagery
+### Flow Chart
 
+### Headings
 
+### Mock Terminal
 
-### Color Scheme
+### Heroku
 
-
-## Wireframes
+## Google Sheet
 
 
 ## Features
-### Favicon
 
-### Main Page
+### Main Menu
 
- 
-### Game Instruction Pop-up
-
-### Game Pop-up
-
-
-### Memory Game
-
-
-### End of Game Screen
-
+### Instructions
 
 ### Scoreboard
 
+## The Game
 
-### 404 Page
+### Category Selection
 
+### The Game Word
+
+### Updating Hint
+
+### Colored Error Messages
+
+### Game Over Conditions
+
+### Game Won Conditions
+
+### Score calculation
+
+### Scoreboard Update
+
+### End of Game
 
 ## Testing
 See the testing results in the [TESTING.md](TESTING.md) file.
 
 ## Technologies Used
 ### Languages
-HTML, CSS, JavaScript
+Python, CSS
 
 ### Programs Used - Frameworks - Libraries
 
