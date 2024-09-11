@@ -197,6 +197,7 @@ def back_to_menu():
     elif choice == "2":
         exit()
 
+
 # game function
 def get_word():
     """
@@ -322,14 +323,19 @@ def update_hint(guess, hint, wrong_guesses_left):
 
     if "_" not in hint:
        game_over = True
+       print(HEADER_GAME_WON)
+       print("Game Over! You won, congratulation!\n")
        timer_end = time.time()
        seconds = timer_end - timer_start
        seconds = round(seconds, 2)
+       end_of_game_menu()
        calculate_score(wrong_guesses_left, seconds)
+       """
        get_username(wrong_guesses_left, seconds, score)
-       print(HEADER_GAME_WON)
-       print("Game Over! You won, congratulation!\n")
        back_to_menu()
+       """
+       
+
 
     return hint
 
@@ -394,6 +400,30 @@ def to_validate(choice, valid_list):
         validator = False
         print(Fore.RED + "Choice is not valid, please try again!" + Fore.RESET + "\n")
         return validator
+
+
+# End of Game menu
+def end_of_game_menu():
+    """
+    function to give user choice after game is won
+    """
+    print("[1] Add to Scoreboard")
+    print("[2] Play Again")
+    print("[3] Exit the program \n")
+
+    validator = False
+    while validator == False:
+        choice = input("You won the game, what do you want to do now: \n")
+        end_of_game_menu_choices = ["1", "2", "3"]
+        validator = to_validate(choice, end_of_game_menu_choices)
+
+    if choice == "1":
+        get_username()
+    elif choice == "2":
+        os.system("clear")
+        get_word()
+    elif choice == "3":
+        exit()
 
 
 main_menu()
