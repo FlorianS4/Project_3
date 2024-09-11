@@ -70,6 +70,11 @@
 
 ### Flow Chart
 
+The flow chart was used to plan and display the flow of the program. The chart was created with [Lucid Chart](https://lucid.app/documents#/home?folder_id=recent).
+It displays the different decision makings through out the project and shows that the user has a wide range of possibilaties to choose from.
+
+![Flow Chart](assets/docs/readme-images/lucid-chart-hangman.png)
+
 ### Headings
 
 ### Mock Terminal
