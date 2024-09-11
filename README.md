@@ -43,24 +43,28 @@
 - [Acknowledgments](#acknowledgments)
 
 ## Site Owner Goals
-- to provide the user with a fun, quick memory game with images out of the Halo Universe
-- to provide a fun experience for people who have no idea about Halo.
-- to provide the user with a challenge to remember the pictures and to complete the quiz as fast as possible.
-- to provide a scoreboard wich logs the old scores of the user, so the user can come back and try to beat it.
+- to provide the user with a fun Hangman game that is quick to complete 
+- to provide the user with a game that challanges him in different categories
+- to provide the user with a good structured program that is easy to navigate
+- to provide a scoreboard wich logs the score to it and sorts it from best to worst, so the user can challange his old scores
 
 ## User Experience
 ### User Stories
 #### First Time User
-- I want to take a Halo Memory Game.
-- I want the site to be responsive to my device.
-- I want to play the game whenever, wherever.
-- I want the website to be easy to navigate.
+- I want to play a word-guessing game / Hangman game.
+- I want the site read instructions on how to play.
+- I want the program to be easy to navigate and use.
+- I want to be able to test my knowledge in different categories.
+- I want to take the quiz whenever, wherever.
 
 #### Returning User
-- I want to be able to play the game with memory cards in a different order.
+- I want to be able to try different categories or other words from the same category.
+- I want different words in the same category.
 
 #### Frequent User
-- I want to be able to see my score to see how I am performing and to beat my old highscore.
+- I want to save my highscore to a scoreboard.
+- I want to see how well I did and compare myself to others.
+- I want to play again, after I won the game.
 
 ## Design and Flow
 
