@@ -34,36 +34,34 @@ HEADER_GAME = r"""
     | |_| |/ /_\ \|  \| | |  \/| .  . |/ /_\ \|  \| |
     |  _  ||  _  || . ` | | __ | |\/| ||  _  || . ` |
     | | | || | | || |\  | |_\ \| |  | || | | || |\  |
-    \_| |_/\_| |_/\_| \_/\____/\_|  |_/\_| |_/\_| \_/      
+    \_| |_/\_| |_/\_| \_/\____/\_|  |_/\_| |_/\_| \_/
     """
 
 HEADER_WELCOME = r"""
-    _    _ _____ _     _____ ________  ___ _____   _____ _____  
-    | |  | |  ___| |   /  __ \  _  |  \/  ||  ___| |_   _|  _  | 
-    | |  | | |__ | |   | /  \/ | | | .  . || |__     | | | | | | 
-    | |/\| |  __|| |   | |   | | | | |\/| ||  __|    | | | | | | 
-    \  /\  / |___| |___| \__/\ \_/ / |  | || |___    | | \ \_/ / 
-     \/  \/\____/\_____/\____/\___/\_|  |_/\____/    \_/  \___/  
-                                                                
-                                                                
-        _____ _   _  _____   _____   ___  ___  ___ _____        
-        |_   _| | | ||  ___| |  __ \ / _ \ |  \/  ||  ___|       
-        | | | |_| || |__   | |  \// /_\ \| .  . || |__         
-        | | |  _  ||  __|  | | __ |  _  || |\/| ||  __|        
-        | | | | | || |___  | |_\ \| | | || |  | || |___        
-        \_/ \_| |_/\____/   \____/\_| |_/\_|  |_/\____/        
-        """
+     _    _ _____ _     _____ ________  ___ _____   _____ _____ 
+    | |  | |  ___| |   /  __ \  _  |  \/  ||  ___| |_   _|  _  |
+    | |  | | |__ | |   | /  \/ | | | .  . || |__     | | | | | |
+    | |/\| |  __|| |   | |   | | | | |\/| ||  __|    | | | | | |
+    \  /\  / |___| |___| \__/\ \_/ / |  | || |___    | | \ \_/ /
+     \/  \/\____/\_____/\____/\___/\_|  |_/\____/    \_/  \___/
 
+
+       _____ _   _  _____   _____   ___  ___  ___ _____
+      |_   _| | | ||  ___| |  __ \ / _ \ |  \/  ||  ___|
+        | | | |_| || |__   | |  \// /_\ \| .  . || |__
+        | | |  _  ||  __|  | | __ |  _  || |\/| ||  __|
+        | | | | | || |___  | |_\ \| | | || |  | || |___
+        \_/ \_| |_/\____/   \____/\_| |_/\_|  |_/\____/
+        """
 
 HEADER_GAME_OVER = r"""
     _____   ___  ___  ___ _____   _____  _   _ ___________ 
     |  __ \ / _ \ |  \/  ||  ___| |  _  || | | |  ___| ___ \
     | |  \// /_\ \| .  . || |__   | | | || | | | |__ | |_/ /
-    | | __ |  _  || |\/| ||  __|  | | | || | | |  __||    / 
-    | |_\ \| | | || |  | || |___  \ \_/ /\ \_/ / |___| |\ \ 
-    \____/\_| |_/\_|  |_/\____/   \___/  \___/\____/\_| \_|
+    | | __ |  _  || |\/| ||  __|  | | | || | | |  __||    /
+    | |_\ \| | | || |  | || |___  \ \_/ /\ \_/ / |___| |\ \
+     \____/\_| |_/\_|  |_/\____/   \___/  \___/\____/\_| \_|
     """
-
 
 HEADER_GAME_WON = r"""
     __   _______ _   _   _    _  _____ _   _ 
@@ -73,6 +71,7 @@ HEADER_GAME_WON = r"""
       | | \ \_/ / |_| | \  /\  /\ \_/ / |\  |
       \_/  \___/ \___/   \/  \/  \___/\_| \_/
     """
+
 
 # Main Menu
 def main_menu():
@@ -111,10 +110,6 @@ def main_menu():
     elif choice == "4":
         exit()
     
-    print()
-    main_menu()
-    choice = int(input("Enter your option: "))
-
 
 # Instructions for Game
 def get_instructions_for_game():
@@ -148,7 +143,7 @@ def get_instructions_for_game():
             (    Your score is made up out of how quick you        (
             )    answer, how long the word is and how many         )
             (               wrong guesses you have.                (
-            /\''''''''''''''''''''''''''''''''''''''''''''''''''''''\    
+            /\''''''''''''''''''''''''''''''''''''''''''''''''''''''\
         (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
             \/______________________________________________________/"""
     print(instructions + "\n")
@@ -159,7 +154,6 @@ def get_instructions_for_game():
 def scoreboard_update(worksheet):
     """
     sorts scoreboard, with the lowest score on top
-    
     """
     user_data_score = worksheet.get_all_values()
     columns = user_data_score[0]
@@ -174,7 +168,6 @@ def scoreboard_update(worksheet):
     user_score_line.index = user_score_line.index + 1
 
     print(user_score_line.head(10))
-
 
 
 # Back to Menu function
@@ -312,14 +305,13 @@ def update_hint(guess, hint, wrong_guesses_left):
     """
     Adds a correct guess and updates hint
     """
-    pos_of_guess = [i for i, character in enumerate(word) if character == guess]
+    pos_of_guess = [i for i, letters in enumerate(word) if letters == guess]
     hint_arr = list(hint)
 
     for i in pos_of_guess:
         hint_arr[i] = guess
     
     hint = "".join(hint_arr)
-
 
     if "_" not in hint:
        game_over = True
@@ -330,12 +322,6 @@ def update_hint(guess, hint, wrong_guesses_left):
        seconds = round(seconds, 2)
        calculate_score(wrong_guesses_left, seconds)
        end_of_game_menu(wrong_guesses_left, seconds)
-       """
-       get_username(wrong_guesses_left, seconds, score)
-       back_to_menu()
-       """
-       
-
 
     return hint
 
@@ -365,7 +351,7 @@ def get_username(wrong_guesses_left, seconds, score):
     """
     username_to_validate = False
     while username_to_validate is False:
-        username = input("Enter username (max. 12 letters): \n")
+        username = input("Enter a username (requirements: max-length: 12, letters only): \n")
         username_to_validate = username_validation(username)
         user_data_row = []
         user_data_row.append(username)
