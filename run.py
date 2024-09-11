@@ -328,8 +328,8 @@ def update_hint(guess, hint, wrong_guesses_left):
        timer_end = time.time()
        seconds = timer_end - timer_start
        seconds = round(seconds, 2)
-       end_of_game_menu()
        calculate_score(wrong_guesses_left, seconds)
+       end_of_game_menu(wrong_guesses_left, seconds)
        """
        get_username(wrong_guesses_left, seconds, score)
        back_to_menu()
@@ -403,7 +403,7 @@ def to_validate(choice, valid_list):
 
 
 # End of Game menu
-def end_of_game_menu():
+def end_of_game_menu(wrong_guesses_left, seconds):
     """
     function to give user choice after game is won
     """
@@ -418,7 +418,9 @@ def end_of_game_menu():
         validator = to_validate(choice, end_of_game_menu_choices)
 
     if choice == "1":
-        get_username()
+        get_username(wrong_guesses_left, seconds, score)
+        print("\n")
+        back_to_menu()
     elif choice == "2":
         os.system("clear")
         get_word()

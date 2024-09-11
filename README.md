@@ -141,7 +141,15 @@ Python, CSS
 - [google.oauth2.service_account](https://pypi.org/project/python-oauth2/) - Used for authentification to access the Google Cloud.
 
 ## Deployment
-This site was deployed to GitHub pages. Instructions:
+This site was deployed to [Heroku](https://dashboard.heroku.com/login).
+
+How to deploy the project.
+- Get a list of requirements that the project needs to run and put them into a txt file. Heroku will install these dependencies so the program is running correctly.
+
+![txt file example](assets/docs/readme-images/txt-file-example.png)
+- Go to the Heroku website.
+- Choose option "creat new app".
+- Go to settings and 
 
 - Login to Github.
 - Go to the GitHub repository: FlorianS4/Project-2-Memory-Game-JS, navigate to the Settings tab.
