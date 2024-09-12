@@ -83,6 +83,7 @@ It displays the different decision makings through out the project and shows tha
 
 ## Google Sheet
 
+The Google Sheet for storing data can be found [here](https://docs.google.com/spreadsheets/d/1B0skz-1BNoWH-YB8X-lZyaupzcWZC7egMYKFBE739mQ/edit?gid=0#gid=0). The sheet **words** contains the categories with all the words in it. The sheet **scoreboard** stores all the scores of the users.
 
 ## Features
 
@@ -143,20 +144,34 @@ Python, CSS
 ## Deployment
 This site was deployed to [Heroku](https://dashboard.heroku.com/login).
 
-How to deploy the project.
+**How to deploy the project:**
 - Get a list of requirements that the project needs to run and put them into a txt file. Heroku will install these dependencies so the program is running correctly.
 
 ![txt file example](assets/docs/readme-images/txt-file-example.png)
 - Go to the Heroku website.
 - Choose option "creat new app".
-- Go to settings and 
+- Go to settings and navigate to "Reveal Config Vars".
+ - Enter CREDS in key and copy your creds.json file and past it into the VALUE field.
+ - Enter PORT in key and 8000 in the VALUE field.
+- Select "Add buildpacks" next.
+ - Choose the `Python` buildpack first and the `node.js` second.
+- Go to the deploy option.
+- Select GitHub as your deployment option.
+- Confirm the connection to Github and choose the correct repository.
+- Select "Enable Automatic" and "Deploy branch" with the selection **main**.
+- Select "view" to see the live website.
 
-- Login to Github.
-- Go to the GitHub repository: FlorianS4/Project-2-Memory-Game-JS, navigate to the Settings tab.
-- Select the Pages tab on the menu on the left side.
-- Under Source, choose main from the Branch dropdown menu. Save it.
-- The page will refresh itself and the website is now deployed with a text indicating such.
-
+**How to set up credentials and Google Sheets:**
+- Creat a new sheet via Google Sheets.
+- Go to [Google Cloud Platform](https://console.cloud.google.com/welcome).
+    - Creat a new project.
+    - Afterwards go to "APIs and Services" and select "library".
+    - Enable the [Google Drive API](https://console.cloud.google.com/apis/library/drive.googleapis.com).
+    - Next we have to create **credentials**. Press "Create credentials" for that.
+    - Afterwards go login data and select keys.
+    - Create a new key and select JSON.
+    - A JSON file will be downloaded to your machine. This you just pull into your GitPod repository.
+    - Last enable the [Google Sheets API](https://console.cloud.google.com/apis/library/sheets.googleapis.com).
 ### Running the project locally
 How to Fork:
 - Login to Github
