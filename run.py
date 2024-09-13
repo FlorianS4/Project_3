@@ -94,7 +94,8 @@ def main_menu():
         
     if choice == "1":
         # Opens Hangman Game
-        print("You choose 1, Game will start shortly....")
+        os.system("clear")
+        print("You choose 1, please choose a category you want to guess a word in ...")
         get_word()
     elif choice == "2":
         # Opens Game Instructions
@@ -102,12 +103,14 @@ def main_menu():
         get_instructions_for_game()
     elif choice == "3":
         # opens Scoreboard
+        os.system("clear")
         print("Scoreboard is opening...")
         scoreboard_worksheet = SHEET.worksheet("scoreboard")
         scoreboard_update(scoreboard_worksheet)
         print("\n")
         back_to_menu()
     elif choice == "4":
+        print("Thanks for playing, have a good day :)")
         exit()
     
 
@@ -188,6 +191,7 @@ def back_to_menu():
         os.system("clear")
         main_menu()        
     elif choice == "2":
+        print("Thanks for playing, have a good day :)")
         exit()
 
 
@@ -258,7 +262,8 @@ def input_user():
         print(hint)
         letters_guessed_str = " ".join(letters_guessed)
 
-        print(f"Guessed letters: {letters_guessed_str} and guess left {wrong_guesses_left}\n")
+        print(f"Already guessed letters: {letters_guessed_str}\n")
+        print(f"You have {wrong_guesses_left} guesses left, choose carefully\n")
         guess = input("Guess a letter: \n").upper()
 
         if guess == "HELP":
@@ -266,7 +271,7 @@ def input_user():
         elif guess in letters_guessed:
             print(Fore.RED + "Letter already guessed, try another"+ Fore.RESET + "\n")
         elif not guess.isalpha() or len(guess) > 1:
-            print(Fore.RED + "Guess not vialble, guess again" + Fore.RESET + "\n")
+            print(Fore.RED + "Guess not viable, guess again" + Fore.RESET + "\n")
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
@@ -283,7 +288,6 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         hint = update_hint(guess, hint, wrong_guesses_left)
     elif guess not in word and hangman_index == 6:
         wrong_guesses_left -= 1
-        print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
         game_over = True
         print(HEADER_GAME_OVER)
@@ -316,7 +320,6 @@ def update_hint(guess, hint, wrong_guesses_left):
     if "_" not in hint:
        game_over = True
        print(HEADER_GAME_WON)
-       print("Game Over! You won, congratulation!\n")
        timer_end = time.time()
        seconds = timer_end - timer_start
        seconds = round(seconds, 2)
@@ -371,7 +374,7 @@ def calculate_score(wrong_guesses_left, seconds):
     """
     global score
     score = math.ceil(seconds * 100 / (len(word)) + (wrong_guesses_left))
-    print(score)
+    print(Fore.GREEN + f"Congratulations you guessed the word correctly and achieved a score of: {score}" + Fore.RESET + "\n")
 
 
 # validation for input
@@ -411,6 +414,7 @@ def end_of_game_menu(wrong_guesses_left, seconds):
         os.system("clear")
         get_word()
     elif choice == "3":
+        print("Thanks for playing, have a good day :)")
         exit()
 
 
