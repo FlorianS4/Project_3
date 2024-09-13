@@ -88,16 +88,41 @@ The Google Sheet for storing data can be found [here](https://docs.google.com/sp
 
 ## Features
 
+### Main Header
+
+![Main Game Header]()
+- A header for the game so the user knows that the Terminal is running and not displaying an error message.
+- Used [ASCII Art](https://www.asciiart.eu/text-to-ascii-art) for it.
 ### Main Menu
 
+![Main Menu]()
+- The Main Menu has four option for the user to choose from: Play Hangman, Game Instructions, Scoreboard and Exit the program.
+- The input is validated so the user has to enter a number beetween 1-4, otherwise a error message is displayed and he has to choose again.
 
 ### Instructions
 
+![Game Instructions]()
+- The game instructions give an explanation on how to play the game and how the scoring system works.
+- I used [ASCII Border Art](https://www.asciiart.eu/art-and-design/borders) for it. It should look like a scroll.
+- Under the instructions is a back to menu function printed.
+- The User can decide if he wants to return to the menu or exit the program.
+![Back to Main Menu]()
+
 ### Scoreboard
+
+![Scoreboard]()
+- If the user chooses option 3, a scoreboard of previous players will display. It displays the 10 best scores. 
+- The scoreboard is sorted by score. The score is calculated by `seconds * 100 / (length of the word + wrong guesses left)`. 
+- The lower the score, the better people performed.
+- The sorting is done by using the open source data tool [Pandas](https://realpython.com/pandas-sort-python/). Pandas sorts and displays the data from the google word sheet into the scoreboard.
+- Under the scoreboard the user can once again choose what to do next. Return to main menu or exit the program.
 
 ## The Game
 
 ### Category Selection
+
+![Category Selection]()
+- If the user chooses option 1 five categories will be displayed and the user can choose in witch category he wants to play the game.
 
 ### The Game Word
 
