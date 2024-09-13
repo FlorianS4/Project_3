@@ -158,9 +158,21 @@ The Google Sheet for storing data can be found [here](https://docs.google.com/sp
 
 ### Game Won Conditions
 
+![Game Won]()
+- If the user guesses every character correctly a Game Won Header will be displayed.
+- Underneath it the user can see his score and can choose what to do next.
+
 ### Score calculation
 
+![Score calculate function]()
+- The score is calculated by `seconds * 100 / (length of the word + wrong guesses left)`.
+- The lower the score, the better.
+
 ### Scoreboard Update
+
+- If user chooses option 1 he is required to enter a username, so the score can be added to the scoreboard.
+- If the username was entered correctly, and followed the only letters, max 12 letters.
+- The current scoreboard will be displayed.
 
 ### End of Game
 
