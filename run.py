@@ -292,9 +292,9 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         game_over = True
         print(HEADER_GAME_OVER)
         print("The word you were looking for was" + Fore.MAGENTA + f" {word}" + Fore.RESET + ".\n")
-        print("Game Over! Return to main menu or exit the program\n")
+        print("You lost :( Choose what to do next! Play again, return to main menu or exit the program\n")
         timer_end = time.time()
-        back_to_menu()
+        game_over_menu()
     else:
         print(Fore.RED + "Incorrect guess, try another letter" + Fore.RESET + "\n")
         wrong_guesses_left -= 1
@@ -417,5 +417,31 @@ def end_of_game_menu(wrong_guesses_left, seconds):
         print("Thanks for playing, have a good day :)")
         exit()
 
+
+# game over menu function
+def game_over_menu():
+    """
+    function to the user a choice after Game Over, because no guesses left
+    """
+    print("[1] Play Again")
+    print("[2] Back to main menu")
+    print("[3] Exit the program \n")
+
+    validator = False
+    while validator == False:
+        choice = input("Enter your option: ")
+        game_over_menu_choices = ["1", "2"]
+        validator = to_validate(choice, game_over_menu_choices)
+
+    if choice == "1":
+        os.system("clear")
+        print("You choose 1, please choose a category you want to guess a word in ...")
+        get_word()
+    elif choice == "2":
+        os.system("clear")
+        main_menu()
+    elif choice == "3":
+        print("Thanks for playing, have a good day :)")
+        exit()
 
 main_menu()
