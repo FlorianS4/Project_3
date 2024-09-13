@@ -126,11 +126,35 @@ The Google Sheet for storing data can be found [here](https://docs.google.com/sp
 
 ### The Game Word
 
+![Displaying Game Word]()
+- After the user choose a category, the game will display the word in hints accoridng to the length of the word.
+- The word is picked randomly form the google sheet and accordingly to the category the user choose.
 ### Updating Hint
+
+- The user can only choose on letter at a time.
+- If the letter is guessed correctly, the game word will be updated and the hint "_" will be replaced by the correctly guessed letter.
+- If a letter is occaring more than once in the word, it will also be displayed mulitple times.
+![Guessed letter appears two times]()
+
+- If the user guesses the wrong letter, a red error message will be displayed and the hangman figure will be updated.
+![Wrong guess]()
+- If a wrong guess occaers the user also looses a live.
+
+- If a letter was already guessed and the user guesses it again, a message will be displayed informing the user about the reaquring guess.
+![Already guessed letter]()
 
 ### Colored Error Messages
 
+- To inform the user something was not correct, the print message will be displayed in red.
+- I used [colorama](https://pypi.org/project/colorama/) for this.
+![Error message]()
+
 ### Game Over Conditions
+
+![Game Over]()
+- If the user has no more lives left and the hangman figure is completly drawn the game is over.
+- Under the game over header the word that was looked for will be displayed.
+- The user can than choose from 3 options what to do next.
 
 ### Game Won Conditions
 
