@@ -169,30 +169,30 @@ The Google Sheet for storing data can be found [here](https://docs.google.com/sp
 
 ### Game Over Conditions
 
-![Game Over]()
-- If the user has no more lives left and the hangman figure is completly drawn the game is over.
+![Game Over](/assets/docs/readme-images/game-over.png)
+- If the user has no more lives left and the hangman figure is completely drawn the game is over.
 - Under the game over header the word that was looked for will be displayed.
-- The user can than choose from 3 options what to do next.
+- The user can then choose from 3 options what to do next.
+- The input is validated so the user has to enter a number between 1-3, otherwise an error message is displayed and he has to choose again.
 
 ### Game Won Conditions
 
-![Game Won]()
+![Game Won](/assets/docs/readme-images/game-won.png)
 - If the user guesses every character correctly a Game Won Header will be displayed.
 - Underneath it the user can see his score and can choose what to do next.
+- The input is validated so the user has to enter a number between 1-3, otherwise an error message is displayed and he has to choose again.
 
 ### Score calculation
 
-![Score calculate function]()
+![Score calculate function](/assets/docs/readme-images/calculate-score-function.png)
 - The score is calculated by `seconds * 100 / (length of the word + wrong guesses left)`.
 - The lower the score, the better.
 
 ### Scoreboard Update
 
-- If user chooses option 1 he is required to enter a username, so the score can be added to the scoreboard.
+- After winning, if the user chooses option 1 he is required to enter a username, so the score can be added to the scoreboard.
 - If the username was entered correctly, and followed the only letters, max 12 letters.
-- The current scoreboard will be displayed.
-
-### End of Game
+- The current scoreboard with his data will be displayed.
 
 ## Testing
 See the testing results in the [TESTING.md](TESTING.md) file.
@@ -230,7 +230,7 @@ This site was deployed to [Heroku](https://dashboard.heroku.com/login).
 
 ![txt file example](assets/docs/readme-images/txt-file-example.png)
 - Go to the Heroku website.
-- Choose option "creat new app".
+- Choose option "create new app".
 - Go to settings and navigate to "Reveal Config Vars".
  - Enter CREDS in key and copy your creds.json file and past it into the VALUE field.
  - Enter PORT in key and 8000 in the VALUE field.
@@ -243,9 +243,9 @@ This site was deployed to [Heroku](https://dashboard.heroku.com/login).
 - Select "view" to see the live website.
 
 **How to set up credentials and Google Sheets:**
-- Creat a new sheet via Google Sheets.
+- Create a new sheet via Google Sheets.
 - Go to [Google Cloud Platform](https://console.cloud.google.com/welcome).
-    - Creat a new project.
+    - Create a new project.
     - Afterwards go to "APIs and Services" and select "library".
     - Enable the [Google Drive API](https://console.cloud.google.com/apis/library/drive.googleapis.com).
     - Next we have to create **credentials**. Press "Create credentials" for that.
