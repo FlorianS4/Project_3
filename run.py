@@ -298,7 +298,6 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     else:
         print(Fore.RED + "Incorrect guess, try another letter" + Fore.RESET + "\n")
         wrong_guesses_left -= 1
-        print(wrong_guesses_left)
         print("     " + HANGMAN_STAGES[hangman_index])
         hangman_index += 1
     return wrong_guesses_left, hangman_index, hint, game_over
