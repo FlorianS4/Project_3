@@ -353,15 +353,15 @@ def get_username(wrong_guesses_left, seconds, score):
     while username_to_validate is False:
         username = input("Enter a username (requirements: max-length: 12, letters only): \n")
         username_to_validate = username_validation(username)
-        user_data_row = []
-        user_data_row.append(username)
-        user_data_row.append(wrong_guesses_left)
-        user_data_row.append(seconds)
-        user_data_row.append(score)
-        print(user_data_row)
-        scoreboard_worksheet = SHEET.worksheet("scoreboard")
-        scoreboard_worksheet.append_row(user_data_row)
-        scoreboard_update(scoreboard_worksheet)
+    user_data_row = []
+    user_data_row.append(username)
+    user_data_row.append(wrong_guesses_left)
+    user_data_row.append(seconds)
+    user_data_row.append(score)
+    print(user_data_row)
+    scoreboard_worksheet = SHEET.worksheet("scoreboard")
+    scoreboard_worksheet.append_row(user_data_row)
+    scoreboard_update(scoreboard_worksheet)
 
 
 # calculate score function
