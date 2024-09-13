@@ -10,7 +10,6 @@
 - [Design and Flow](#design-and-flow)
     - [Flow Chart](#flow-chart)
     - [Headings](#headings)
-    - [Mock Terminal](#moch-terminal)
     - [Heroku](#heroku)
 - [Google Sheet](#google-sheet)
 - [Features](#features)
@@ -37,7 +36,7 @@
 - [Credits](#credits)
     - [Content](#content)
     - [Resources Used](#resources-used)
-    - [Media](#media)
+    - [Code](#code)
 - [Fixed Bugs](#fixed-bugs)
 - [Future Content](#future-content)
 - [Acknowledgments](#acknowledgments)
@@ -76,10 +75,12 @@ It displays the different decision makings through out the project and shows tha
 ![Flow Chart](assets/docs/readme-images/lucid-chart-hangman.png)
 
 ### Headings
-
-### Mock Terminal
+- For the Headings I used the [ASCII text to Art converter](https://www.asciiart.eu/text-to-ascii-art).
+    - The font size I used is **Doom**
 
 ### Heroku
+- For the Heroku App Version I just center it.
+- And gave it a background color `#635656d3`.
 
 ## Google Sheet
 
@@ -88,6 +89,7 @@ The Google Sheet for storing data can be found [here](https://docs.google.com/sp
 ## Features
 
 ### Main Menu
+
 
 ### Instructions
 
@@ -187,14 +189,16 @@ How to clone:
 - A clone will be created.
 
 ## Credits
-### Content
 
+### Content
+The Hangman Game contains names from movies and video games. All names belong to their respective owners.
 
 ### Resources Used
-- Code Institute's lessons (love maths project)
+- Code Institute's lessons (love sandwiches project)
 - [Stack Overflow](https://stackoverflow.com/)
 - [W3Schools](https://www.w3schools.com/)
-### Media
+### Code
+
 
 ## Fixed Bugs
 
