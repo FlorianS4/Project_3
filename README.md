@@ -70,7 +70,7 @@
 ### Flow Chart
 
 The flow chart was used to plan and display the flow of the program. The chart was created with [Lucid Chart](https://lucid.app/documents#/home?folder_id=recent).
-It displays the different decision makings through out the project and shows that the user has a wide range of possibilaties to choose from.
+It displays the different decision makings throughout the project and shows that the user has a wide range of possibilities to choose from.
 
 ![Flow Chart](assets/docs/readme-images/lucid-chart-hangman.png)
 
@@ -90,64 +90,82 @@ The Google Sheet for storing data can be found [here](https://docs.google.com/sp
 
 ### Main Header
 
-![Main Game Header]()
+![Main Game Header](/assets/docs/readme-images/game-header.png)
 - A header for the game so the user knows that the Terminal is running and not displaying an error message.
 - Used [ASCII Art](https://www.asciiart.eu/text-to-ascii-art) for it.
 ### Main Menu
 
-![Main Menu]()
-- The Main Menu has four option for the user to choose from: Play Hangman, Game Instructions, Scoreboard and Exit the program.
-- The input is validated so the user has to enter a number beetween 1-4, otherwise a error message is displayed and he has to choose again.
+![Main Menu](/assets/docs/readme-images/main-menu.png)
+- The Main Menu has four options for the user to choose from: Play Hangman, Game Instructions, Scoreboard and Exit the program.
+- The input is validated so the user has to enter a number between 1-4, otherwise an error message is displayed and he has to choose again.
+
+### Main Menu - Validation
+
+![Main Menu Validation](/assets/docs/readme-images/main-menu-validation.png)
+- The user has to enter a number beetween 1-4 otherwise a Error Message will be displayed, informing that the choice is not valid.
+- The message is printed in red, to draw attention to the fact, that something is wrong.
 
 ### Instructions
 
-![Game Instructions]()
+![Game Instructions](/assets/docs/readme-images/game-instructions.png)
 - The game instructions give an explanation on how to play the game and how the scoring system works.
-- I used [ASCII Border Art](https://www.asciiart.eu/art-and-design/borders) for it. It should look like a scroll.
-- Under the instructions is a back to menu function printed.
+- I used [ASCII Border Art](https://www.asciiart.eu/art-and-design/borders) for it. It should look like an old scroll.
+
+### Back to main menu function
+![Back to Main Menu](/assets/docs/readme-images/back-to-menu-function.png)
+- Under the instructions there is a back to menu function printed.
 - The User can decide if he wants to return to the menu or exit the program.
-![Back to Main Menu]()
+- The validation for the user input is the same as the main menu validation found [here](#main-menu---validation).
+
 
 ### Scoreboard
 
-![Scoreboard]()
-- If the user chooses option 3, a scoreboard of previous players will display. It displays the 10 best scores. 
-- The scoreboard is sorted by score. The score is calculated by `seconds * 100 / (length of the word + wrong guesses left)`. 
+![Scoreboard](/assets/docs/readme-images/scoreboard.png)
+- Option 3 displays a scoreboard of previous players. It shows the 10 best scores. 
+- The scoreboard is sorted by a score. This score is calculated by `seconds * 100 / (length of the word + wrong guesses left)`. 
 - The lower the score, the better people performed.
-- The sorting is done by using the open source data tool [Pandas](https://realpython.com/pandas-sort-python/). Pandas sorts and displays the data from the google word sheet into the scoreboard.
-- Under the scoreboard the user can once again choose what to do next. Return to main menu or exit the program.
+- The sorting is done by using the open source data tool [Pandas](https://realpython.com/pandas-sort-python/). Pandas, a data analytic tool, is used to sort and display data frames that are in my above mentioned google word sheet in a separate spreadsheet.
+- Under the scoreboard the [Back to main menu function](#back-to-main-menu-function) is called again.
+- The validation for the user input is the same as the main menu validation found [here](#main-menu---validation).
 
 ## The Game
 
 ### Category Selection
 
-![Category Selection]()
-- If the user chooses option 1 five categories will be displayed and the user can choose in witch category he wants to play the game.
+![Category Selection](/assets/docs/readme-images/game-category-selection.png)
+- With option 1, five categories will be displayed and the user can choose in which category he wants to play the game.
+- The input is validated so the user has to enter a number between 1-5, otherwise a error message is displayed and he has to choose again.
 
 ### The Game Word
 
-![Displaying Game Word]()
-- After the user choose a category, the game will display the word in hints accoridng to the length of the word.
-- The word is picked randomly form the google sheet and accordingly to the category the user choose.
+![Displaying Game Word](/assets/docs/readme-images/game-word-display.png)
+- After the user chooses a category, the game will display the word in hints of “_” according to the length of the word.
+- The word is picked randomly form the google sheet and according to the category the user chooses.
+
 ### Updating Hint
 
-- The user can only choose on letter at a time.
+- The user can only choose one letter at a time.
 - If the letter is guessed correctly, the game word will be updated and the hint "_" will be replaced by the correctly guessed letter.
-- If a letter is occaring more than once in the word, it will also be displayed mulitple times.
-![Guessed letter appears two times]()
 
-- If the user guesses the wrong letter, a red error message will be displayed and the hangman figure will be updated.
-![Wrong guess]()
-- If a wrong guess occaers the user also looses a live.
+![Updating Hint with correctly guessed letter](/assets/docs/readme-images/guessed-letter-replaces-hint.png)
+- If a letter is occurring more than once in the word, it will also be shown multiple times.
 
-- If a letter was already guessed and the user guesses it again, a message will be displayed informing the user about the reaquring guess.
-![Already guessed letter]()
+![Guessed letter appears two times](/assets/docs/readme-images/guessed-letter-occurring-more-than-once.png)
+
+- If the user guesses the wrong letter, a red message will be displayed and the hangman figure will be updated.
+![Wrong guess](/assets/docs/readme-images/wrong-guess.png)
+
+- If a wrong guess occurs the user also loses a life.
+
+- If a letter was already guessed and the user guesses it again, a message will be displayed informing the user about the recurring guess.
+![Already guessed letter](/assets/docs/readme-images/guesses-already-guessed-letter.png)
+
+- The terminal will after every guess, right or wrong display the already guessed letters and the guesses left
 
 ### Colored Error Messages
 
-- To inform the user something was not correct, the print message will be displayed in red.
+- To inform the user something was not correct and if the guess was the wrong type of input a print message will be displayed in red.
 - I used [colorama](https://pypi.org/project/colorama/) for this.
-![Error message]()
 
 ### Game Over Conditions
 
@@ -238,12 +256,12 @@ This site was deployed to [Heroku](https://dashboard.heroku.com/login).
 ### Running the project locally
 How to Fork:
 - Login to Github
-- Go to the GitHub repository: Project-2-Memory-Game-JS
+- Go to the GitHub repository: Project_3
 - Select the Fork button on the right at the top
 
 How to clone:
 - Login to Github
-- Go to the GitHub repository: Project-2-Memory-Game-JS
+- Go to the GitHub repository: Project_3
 - Select the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 - Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 - Type 'git clone' into the terminal and then paste the link you copied in step 3. and enter.
