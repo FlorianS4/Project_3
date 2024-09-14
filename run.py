@@ -29,7 +29,7 @@ WORD_SHEET = SHEET.worksheet("words")
 # ASCII Art from https://www.asciiart.eu/text-to-ascii-art
 
 HEADER_GAME = r"""
-     _   _   ___   _   _ _____ ___  ___  ___   _   _ 
+     _   _   ___   _   _ _____ ___  ___  ___   _   _
     | | | | / _ \ | \ | |  __ \|  \/  | / _ \ | \ | |
     | |_| |/ /_\ \|  \| | |  \/| .  . |/ /_\ \|  \| |
     |  _  ||  _  || . ` | | __ | |\/| ||  _  || . ` |
@@ -38,7 +38,7 @@ HEADER_GAME = r"""
     """
 
 HEADER_WELCOME = r"""
-     _    _ _____ _     _____ ________  ___ _____   _____ _____ 
+     _    _ _____ _     _____ ________  ___ _____   _____ _____
     | |  | |  ___| |   /  __ \  _  |  \/  ||  ___| |_   _|  _  |
     | |  | | |__ | |   | /  \/ | | | .  . || |__     | | | | | |
     | |/\| |  __|| |   | |   | | | | |\/| ||  __|    | | | | | |
@@ -55,7 +55,7 @@ HEADER_WELCOME = r"""
         """
 
 HEADER_GAME_OVER = r"""
-    _____   ___  ___  ___ _____   _____  _   _ ___________ 
+     _____   ___  ___  ___ _____   _____  _   _ ___________
     |  __ \ / _ \ |  \/  ||  ___| |  _  || | | |  ___| ___ \
     | |  \// /_\ \| .  . || |__   | | | || | | | |__ | |_/ /
     | | __ |  _  || |\/| ||  __|  | | | || | | |  __||    /
@@ -64,7 +64,7 @@ HEADER_GAME_OVER = r"""
     """
 
 HEADER_GAME_WON = r"""
-    __   _______ _   _   _    _  _____ _   _ 
+    __   _______ _   _   _    _  _____ _   _
     \ \ / /  _  | | | | | |  | ||  _  | \ | |
      \ V /| | | | | | | | |  | || | | |  \| |
       \ / | | | | | | | | |/\| || | | | . ` |
@@ -87,15 +87,16 @@ def main_menu():
     print("[4] Exit the program\n")
 
     validator = False
-    while validator == False:
+    while validator is False:
         choice = input("Enter your option: ")
         menu_choices = ["1", "2", "3", "4"]
         validator = to_validate(choice, menu_choices)
-        
+
     if choice == "1":
         # Opens Hangman Game
         os.system("clear")
-        print("You choose 1, please choose a category you want to guess a word in ...")
+        print("You choose 1, please choose a category you want to guess"
+              + " a word in ...")
         get_word()
     elif choice == "2":
         # Opens Game Instructions
@@ -112,7 +113,7 @@ def main_menu():
     elif choice == "4":
         print("Thanks for playing, have a good day :)")
         exit()
-    
+
 
 # Instructions for Game
 def get_instructions_for_game():
@@ -120,7 +121,7 @@ def get_instructions_for_game():
     Instructions on how to play the game and how to navigate it
     """
     os.system("clear")
-    instructions = r""" 
+    instructions = r"""
             _______________________________________________________
             /\                                                      \
         (O)===)><><><><><><><><><><><><><><><><><><><><><><><><><><><)==(O)
@@ -161,13 +162,13 @@ def scoreboard_update(worksheet):
     user_data_score = worksheet.get_all_values()
     columns = user_data_score[0]
     user_score = user_data_score[1:]
-    user_score_line = pd.DataFrame(user_score, columns = columns)
+    user_score_line = pd.DataFrame(user_score, columns=columns)
     pd.set_option("display.colheader_justify", "center")
     user_score_line = user_score_line.sort_values(
-        by = [ "SCORE"],
-        ascending = [True]
+        by=["SCORE"],
+        ascending=[True]
     )
-    user_score_line = user_score_line.reset_index(drop = True)
+    user_score_line = user_score_line.reset_index(drop=True)
     user_score_line.index = user_score_line.index + 1
 
     print(user_score_line.head(10))
@@ -182,14 +183,14 @@ def back_to_menu():
     print("[2] Exit the program \n")
 
     validator = False
-    while validator == False:
+    while validator is False:
         choice = input("Enter your option: ")
         back_to_menu_choices = ["1", "2"]
         validator = to_validate(choice, back_to_menu_choices)
 
     if choice == "1":
         os.system("clear")
-        main_menu()        
+        main_menu()
     elif choice == "2":
         print("Thanks for playing, have a good day :)")
         exit()
@@ -210,15 +211,15 @@ def get_word():
     print("[5] FRUITS \n")
 
     validator = False
-    while validator == False:
+    while validator is False:
         category = input("Select a category: ")
-        category_choices = ["1", "2", "3", "4","5"]
+        category_choices = ["1", "2", "3", "4", "5"]
         validator = to_validate(category, category_choices)
-   
+
     if category == "1":
         word_list = WORD_SHEET.col_values(1)
         word = random.choice(word_list)
-        input_user()            
+        input_user()
     elif category == "2":
         word_list = WORD_SHEET.col_values(2)
         word = random.choice(word_list)
@@ -256,27 +257,30 @@ def input_user():
     hint = ""
     for i in range(0, len(word)):
         hint += "_"
-    
 
     while game_over is False:
         print(hint)
         letters_guessed_str = " ".join(letters_guessed)
 
         print(f"Already guessed letters: {letters_guessed_str}\n")
-        print(f"You have {wrong_guesses_left} guesses left, choose carefully\n")
+        print(f"You have {wrong_guesses_left} guesses left,"
+              + " choose carefully\n")
         guess = input("Guess a letter: \n").upper()
 
         if guess == "HELP":
             print(word)
         elif guess in letters_guessed:
-            print(Fore.RED + "Letter already guessed, try another"+ Fore.RESET + "\n")
+            print(Fore.RED + "Letter already guessed, try another"
+                  + Fore.RESET + "\n")
         elif not guess.isalpha() or len(guess) > 1:
-            print(Fore.RED + "Guess not viable, guess again" + Fore.RESET + "\n")
+            print(Fore.RED + "Guess not viable, guess again"
+                  + Fore.RESET + "\n")
         else:
             letters_guessed.append(guess)
             letters_guessed.sort()
-            wrong_guesses_left, hangman_index, hint, game_over  = check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over)
-            
+            wrong_guesses_left, hangman_index, hint, game_over = check_guess(
+                guess, wrong_guesses_left, hangman_index, hint, game_over)
+
 
 # guess function
 def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
@@ -291,12 +295,15 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
         print("     " + HANGMAN_STAGES[hangman_index])
         game_over = True
         print(HEADER_GAME_OVER)
-        print("The word you were looking for was" + Fore.MAGENTA + f" {word}" + Fore.RESET + ".\n")
-        print("You lost :( Choose what to do next! Play again, return to main menu or exit the program\n")
+        print("The word you were looking for was"
+              + Fore.MAGENTA + f" {word}" + Fore.RESET + ".\n")
+        print("You lost :( Choose what to do next! Play again,"
+              + " return to main menu or exit the program\n")
         timer_end = time.time()
         game_over_menu()
     else:
-        print(Fore.RED + "Incorrect guess, try another letter" + Fore.RESET + "\n")
+        print(Fore.RED + "Incorrect guess, try another letter"
+              + Fore.RESET + "\n")
         wrong_guesses_left -= 1
         print("     " + HANGMAN_STAGES[hangman_index])
         hangman_index += 1
@@ -313,17 +320,17 @@ def update_hint(guess, hint, wrong_guesses_left):
 
     for i in pos_of_guess:
         hint_arr[i] = guess
-    
+
     hint = "".join(hint_arr)
 
     if "_" not in hint:
-       game_over = True
-       print(HEADER_GAME_WON)
-       timer_end = time.time()
-       seconds = timer_end - timer_start
-       seconds = round(seconds, 2)
-       calculate_score(wrong_guesses_left, seconds)
-       end_of_game_menu(wrong_guesses_left, seconds)
+        game_over = True
+        print(HEADER_GAME_WON)
+        timer_end = time.time()
+        seconds = timer_end - timer_start
+        seconds = round(seconds, 2)
+        calculate_score(wrong_guesses_left, seconds)
+        end_of_game_menu(wrong_guesses_left, seconds)
 
     return hint
 
@@ -339,9 +346,11 @@ def username_validation(username):
                 f"Your input {username}"
             )
     except ValueError as e:
-        print(Fore.RED + f"Invalid username: {e} please try again.\nYou need to enter max 12 letter/s only." + Fore.RESET + "\n")
+        print(Fore.RED + f"Invalid username: {e} please try again."
+              + "\nYou need to enter max 12 letter/s only."
+              + Fore.RESET + "\n")
         return False
-    else: 
+    else:
         return True
 
 
@@ -349,11 +358,12 @@ def username_validation(username):
 def get_username(wrong_guesses_left, seconds, score):
     """
     getting and validating username and add it with the time
-    and wrong guesses left to the scoreboard 
+    and wrong guesses left to the scoreboard
     """
     username_to_validate = False
     while username_to_validate is False:
-        username = input("Enter a username (requirements: max-length: 12, letters only): \n")
+        username = input("Enter a username (requirements: max-length:"
+                         + " 12, letters only): \n")
         username_to_validate = username_validation(username)
     user_data_row = []
     user_data_row.append(username)
@@ -373,7 +383,8 @@ def calculate_score(wrong_guesses_left, seconds):
     """
     global score
     score = math.ceil(seconds * 100 / (len(word)) + (wrong_guesses_left))
-    print(Fore.GREEN + f"Congratulations you guessed the word correctly and achieved a score of: {score}" + Fore.RESET + "\n")
+    print(Fore.GREEN + "Congratulations you guessed the word correctly"
+          + f" and achieved a score of: {score}" + Fore.RESET + "\n")
 
 
 # validation for input
@@ -386,7 +397,8 @@ def to_validate(choice, valid_list):
         return validator
     else:
         validator = False
-        print(Fore.RED + "Choice is not valid, please try again!" + Fore.RESET + "\n")
+        print(Fore.RED + "Choice is not valid, please try again!"
+              + Fore.RESET + "\n")
         return validator
 
 
@@ -400,7 +412,7 @@ def end_of_game_menu(wrong_guesses_left, seconds):
     print("[3] Exit the program \n")
 
     validator = False
-    while validator == False:
+    while validator is False:
         choice = input("You won the game, what do you want to do now: \n")
         end_of_game_menu_choices = ["1", "2", "3"]
         validator = to_validate(choice, end_of_game_menu_choices)
@@ -427,14 +439,15 @@ def game_over_menu():
     print("[3] Exit the program \n")
 
     validator = False
-    while validator == False:
+    while validator is False:
         choice = input("Enter your option: ")
         game_over_menu_choices = ["1", "2"]
         validator = to_validate(choice, game_over_menu_choices)
 
     if choice == "1":
         os.system("clear")
-        print("You choose 1, please choose a category you want to guess a word in ...")
+        print("You choose 1, please choose a category you want"
+              + " to guess a word in ...")
         get_word()
     elif choice == "2":
         os.system("clear")
@@ -442,5 +455,6 @@ def game_over_menu():
     elif choice == "3":
         print("Thanks for playing, have a good day :)")
         exit()
+
 
 main_menu()
