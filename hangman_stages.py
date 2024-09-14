@@ -1,4 +1,4 @@
-HANGMAN_STAGES= [r'''
+HANGMAN_STAGES = [r'''
   +---+
   |   |
       |
