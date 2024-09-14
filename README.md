@@ -63,7 +63,7 @@ Do you also want to test your knowledge in guessing a word right, then go [here]
 - I want to take the quiz whenever, wherever.
 
 #### Returning User
-- I want to be able to try different categories or other words from the same category.
+- I want to be able to try different categories..
 - I want different words in the same category.
 
 #### Frequent User
@@ -159,11 +159,13 @@ The Google Sheet for storing data can be found [here](https://docs.google.com/sp
 ![Guessed letter appears two times](/assets/docs/readme-images/guessed-letter-occurring-more-than-once.png)
 
 - If the user guesses the wrong letter, a red message will be displayed and the hangman figure will be updated.
+
 ![Wrong guess](/assets/docs/readme-images/wrong-guess.png)
 
 - If a wrong guess occurs the user also loses a life.
 
 - If a letter was already guessed and the user guesses it again, a message will be displayed informing the user about the recurring guess.
+
 ![Already guessed letter](/assets/docs/readme-images/guesses-already-guessed-letter.png)
 
 - The terminal will after every guess, right or wrong display the already guessed letters and the guesses left

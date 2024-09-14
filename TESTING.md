@@ -18,6 +18,19 @@ Visit the deployed site: [Hangman Game]([here](https://hangman-project-3-fs-e586
 
 #### PEP8 Testing
 
+For validation of the python code i used the [PEP8 Validator](https://pep8ci.herokuapp.com/#).
+
+<details>
+<summary>PEP8 Validation for run.py</summary>
+
+![PEP8 Validation run.py](/assets/docs/readme-images/pep8-validation.png)
+</details>
+
+<details>
+<summary>PEP8 Validation for hangman_stages.py</summary>
+
+![PEP8 Validation hangman_stages.py](/assets/docs/readme-images/hangman-stages-pep8-validation.png)
+</details>
 
 ### Browser Testing
 The website was successfully tested on the following browsers:
@@ -61,39 +74,49 @@ I implemented a validator testing for every input the user has to make.
 
 ### User Testing
 
-First Time User:
+**First Time User:**
 
-- I want to take a Halo Memory Game.
+- **I want to play a word-guessing game / Hangman game.**
 
-        * The user can play this Halo Memory Game.
+    The user can play the game with the first option available for him.
+- **I want the site read instructions on how to play.**
 
-- I want the site to be responsive to my device.
+    The user can find instructions on how to play in the main menu.
+- **I want the program to be easy to navigate and use.**
 
-        * The user can play the game on whichever device they like.
+    The navigation of the program is preety simpli, just used numbers beetween 1-5.
+- **I want to be able to test my knowledge in different categories.**
 
-- I want to play the game whenever, wherever.
+    There are 5 categories the user can choose from.
+- **I want to take the quiz whenever, wherever.**
 
-        * The user can play the game whenever they like on whichever device they like, as long as they have internet connection.
+    The user can play the hangman game at whichever time he likes on all browsers. He only needs a stable internet connection.
 
-- I want the website to be easy to navigate.
+**Returning User:**
 
-        * The website layout is structured so it is user friendly, with a common and easy to understand layout. The user can understand the purpose of the website without having to look deeply into it.
+- **I want to be able to try different categories.**
 
-Returning User:
+    There are 5 categories the user can choose from. 
+- **I want different words in the same category.**
 
-- I want to be able to play the game with memory cards in a different order.
+    If the user wants to he can replay the same categories again for a different random word.
 
-        * The user can play the game and every time the memory cards will be shuffeled randomly.
+**Frequent User:**
 
-Frequent User:
+- **I want to save my highscore to a scoreboard.**
 
-- I want to be able to see my score to see how I am performing and to beat my old highscore.
+    The user has the option to save his score, after he won the game.
+- **I want to see how well I did and compare myself to others.**
 
-        * After completting the game, the score will be added to the scoreboard, where the best 3 tries on the used machine are dispalyed.
+    The score will be transfered to a google sheet, and if the score is under the best 10 he will be displayed.
+- **I want to play again, after I won the game.**
+
+    The user has 3 options after he won, Add to scoreboard, Play again and Exit the Program.
+
 
 ### Manual Testing
 
-- Main Page 
+- **Main Page**
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
@@ -134,7 +157,3 @@ Frequent User:
 | Score displayed | If the users move counts is in the top 3, the username and moves will be displayed in descending order | Played 10+ Games and logged a variety of scores | Once 3 Scores where displayed, only scores that were better than the third highest were displayed | Pass |
 | Return to Main Page button | Takes the user to the main page | Clicked the button | Takes user to main page | Pass |
 
-
-I also used following sides to test responsivness
-- [Responsinator](http://www.responsinator.com/?url=https%3A%2F%2Fflorians4.github.io%2FProject-2-Memory-Game-JS%2Findex.html)
-- [Am I Responsive](https://ui.dev/amiresponsive?url=https://florians4.github.io/Project-2-Memory-Game-JS/index.html)
