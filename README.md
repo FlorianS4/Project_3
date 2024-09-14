@@ -1,5 +1,11 @@
 # Hangman Game
 
+This is a Hangman game created during my FullStack Devoloper education. It follows the normal rules of Hangman. The user can choose from 5 different categories. After he choose a category he has to guess a random word correctly. He has 7 guesses for this. A Hangman figure is drawn every time the user guesses wrong. The Goal is to guess the word as fast as possible and with as much guesses left as possible. After the game is won, a score will be calculated based on those metrics. The user can add this score to a scoreboard where he can compare himself to other players and their score.
+
+![]()
+
+Do you also want to test your knowledge in guessing a word right, then go [here](https://hangman-project-3-fs-e5867a39357d.herokuapp.com/) and see for yourself, how good you are.
+
 ## Content
 - [Site Owner Goals](#site-owner-goals)
 - [User Experience](#user-experience)
