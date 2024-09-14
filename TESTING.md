@@ -7,7 +7,7 @@ Visit the deployed site: [Hangman Game]([here](https://hangman-project-3-fs-e586
 
 ## Content
 - [Validator Testing](#validator-testing)
-        - [PEP8 Testing](#pep8-testing)
+     - [PEP8 Testing](#pep8-testing)
 - [Browser Testing](#browser-testing)
 - [Input Testing](#input-testing)
 - [User Testing](#user-testing)
@@ -116,44 +116,74 @@ I implemented a validator testing for every input the user has to make.
 
 ### Manual Testing
 
-- **Main Page**
+- **Main Menu**
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| The Site title(hero image) | reloads the website | clicked title(hero image) | Main Page reloads | Pass |
-| Input field for username | Username has to be entered to play | enter username | game starts when enter is pressed | Pass |
-| Blank Space Validation | User cannot enter white space | pressing spacebar | doesn't register in input field | pass |
-| How to play button | Displays the pop-up with the instructions on how to play the game | Clicked on button | Pop-up with instructions on how to play opens | Pass |
-| Play button | Opens Pop-up with memory game | Clicked on button | Game starts, only when username is entered | Pass |
+| Pressing 1 to play the game | Category selection opens | Enter 1 | Category selections opens | Pass |
+| Pressing 2 to open instractions | Instructions opens | Enter 2 | Instructions opens | Pass |
+| Pressing 3 to open scoreboard | Scoreboard opens | Enter 3 | Scoreboard opens | Pass |
+| Pressing 4 to exit the program | Program closes | Enter 4 | Program closes | Pass |
+| Validation for input | Displaying error message when entering something other than numbers beetween 1-4 | Entering letters, whitespaces, higher numbers | Error message displays | Pass |
 
-- How to Play Pop-up
-
-| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
-| --- | --- | --- | --- | --- |
-| button to return to Main Page | returns to main page | Clicked on button | Returns to Main Page | Pass |
-
-- Memory Game Pop-up
+- **Game Instructions**
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Alert for entering name | shows up when username is entered and game pop-up opens | enter username and press play | alert shows up in front of memory game | Pass |
-| Game itself | Memory cards turning over correctly, if a pair is found cards will stay face up | playing the game | cards are turning over correctly and pairs are staying face up | Pass |
-| Moves counter | Moves counter starts with first two cards turned over | turned first two cards over | moves counter starts | Pass |
-| Timer | Timer starts with first two cards turned over | turned first two cards over | timer starts | Pass |
-| Restart Game button | restarts game | Clicked button | Game restarts | Pass |
-| Finished Memory Game so End Game Screen pops-up | End Game Screen with Moves counter and timer shows up, after finishing the game | finding all matching pairs | End Game Screen pops-up | Pass |
+| Displaying instrucations | Displaying instrucations | Opening instrucations via main menu input | Instrucations opens | Pass |
+| Pressing 1 to get back to main menu | Return to main menu | Enter 1 | Returns to main menu | Pass |
+| Pressing 2 to exit the program | Program closes | Enter 2 | Program closes | Pass |
+| Validation for input | Displaying error message when entering something other than numbers beetween 1-2 | Entering letters, whitespaces, higher numbers | Error message displays | Pass |
 
-- End Game Screen Pop-up
+- **Scoreboard**
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| End Game Screen with moves and time to bet the game | Display Moves and Time to bet | finished the game | correct moves and time where displayed | Pass |
-| Scoreboard button | Opens Scoreboard | Clicked button | Scoreboard opens | Pass |
+| Displays Scoreboard with the 10 best scores | Displaying scoreboard | Opening scoreboard via main menu input | Scoreboard opens | Pass |
+| Pressing 1 to get back to main menu | Return to main menu | Enter 1 | Returns to main menu | Pass |
+| Pressing 2 to exit the program | Program closes | Enter 2 | Program closes | Pass |
+| Validation for input | Displaying error message when entering something other than numbers beetween 1-2 | Entering letters, whitespaces, higher numbers | Error message displays | Pass |
 
--Scoreboard
+- **Play Hangman**
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Score displayed | If the users move counts is in the top 3, the username and moves will be displayed in descending order | Played 10+ Games and logged a variety of scores | Once 3 Scores where displayed, only scores that were better than the third highest were displayed | Pass |
-| Return to Main Page button | Takes the user to the main page | Clicked the button | Takes user to main page | Pass |
+| Displaying 5 categories | 5 categories are displayed for the user to choose from | Opening Play Hangman via main menu input | 5 categories are displayed | Pass |
+| Pressing 1 to play category MOVIES | Picking a random word out of choosen category and starting the Hangman game | Enter 1 | Picks words from choosen category and starts game | Pass |
+| Pressing 2 to play category ANIMALS | Picking a random word out of choosen category and starting the Hangman game | Enter 2 | Picks words from choosen category and starts game | Pass |
+| Pressing 3 to play category VIDEO GAMES | Picking a random word out of choosen category and starting the Hangman game | Enter 3 | Picks words from choosen category and starts game | Pass |
+| Pressing 4 to play category SPORTS | Picking a random word out of choosen category and starting the Hangman game | Enter 4 | Picks words from choosen category and starts game | Pass |
+| Pressing 5 to play category FRUITS | Picking a random word out of choosen category and starting the Hangman game | Enter 5 | Picks words from choosen category and starts game | Pass |
+| Validation for input | Displaying error message when entering something other than numbers beetween 1-5 | Entering letters, whitespaces, higher numbers | Error message displays | Pass |
 
+- **Playing the game**
+
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Entering correct letter to guess the word | If correct letter is guessed, "_" hint will be replaced by guessed letter | Entering a letter | If letter is correct, "_" hint will be recplaced by correct letter | Pass |
+| Entering wrong letter to guess the word | If wrong letter is guessed, error message will be displayed, Hangman figure will be displayed | Entering a letter | If letter is wrong, error message will be displayed and hangman figure will be updated | Pass |
+| Validation for letter input | Displaying error message when entering something other than 1 letter at a time | Entering more than 1 letter, whitespaces, numbers | Error message displays | Pass |
+| Winning the Game | If word is guessed correctly, Game Won insert will be displayed and a Menu will open | Guessing the word correctly | Game Won insert displays and menu opens | Pass |
+| Losing the Game | If word wasn't guessd, Game Over will be displayed and Game Over menu opens | Loosing the game | Game Over insert will be displayed and menu opens | Pass |
+
+- **Game Won Display**
+
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Game Won display with features | Score will be displayed and a Menu with options what to do next | Winning the game and seeing the menu | Score is displayed and menu will show underneath | Pass |
+| Score will be displayed with a message for the user | Score will be calculated and score will be displayed | Finishing the game | Score is calulated correctly and displayed | Pass |
+| Pressing 1 to add score to Scoreboard | Program will ask for Username | Enter 1 | Program asks for username with validation, no more than 12 letters and letters only | Pass |
+| Pressing 2 to play again | Category sections opens for user | Enter 2 | Category selection opens | Pass |
+| Pressing 3 to exit the program | Program closes | Enter 3 | Program closes | Pass |
+| Validation for input | Displaying error message when entering something other than numbers beetween 1-3 | Entering letters, whitespaces, higher numbers | Error message displays | Pass |
+
+
+- **Game Over Display**
+
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Game Over display with features | Game Over with the game word will be displayed and options what to do next | Loosing the game | Game over display with menu underneath | Pass |
+| Pressing 1 to play again | Category sections opens for user | Enter 1 | Category selection opens | Pass |
+| Pressing 2 to get back to main menu | Return to main menu | Enter 2 | Returns to main menu | Pass |
+| Pressing 3 to exit the program | Program closes | Enter 3 | Program closes | Pass |
+| Validation for input | Displaying error message when entering something other than numbers beetween 1-3 | Entering letters, whitespaces, higher numbers | Error message displays | Pass |
