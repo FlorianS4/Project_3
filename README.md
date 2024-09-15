@@ -1,6 +1,7 @@
 # Hangman Game
 
-This is a Hangman game created during my FullStack Devoloper education. It follows the normal rules of Hangman. The user can choose from 5 different categories. After he choose a category he has to guess a random word correctly. He has 7 guesses for this. A Hangman figure is drawn every time the user guesses wrong. The Goal is to guess the word as fast as possible and with as much guesses left as possible. After the game is won, a score will be calculated based on those metrics. The user can add this score to a scoreboard where he can compare himself to other players and their score.
+This is a Hangman-game was created during my FullStack Developer education as the Portfolio Project 3 & it follows the normal rules of Hangman. 
+The user can choose from 5 different categories. After he chooses a category he has to guess a random word correctly, he has 7 guesses for this. A Hangman figure is drawn every time the user guesses wrong. The Goal is to guess the word as fast as possible and with as much guesses left as possible. After the game is won, a score will be calculated based on those metrics. The user can add this score to a scoreboard where he can compare himself to other players and their score
 
 ![Hangman Game Start PNG](/assets/docs/readme-images/hangman-game-picture.png)
 
@@ -286,16 +287,30 @@ The Hangman Game contains names from movies and video games. All names belong to
 - [W3Schools](https://www.w3schools.com/)
 ### Code
 
+- I found it irretating, that the terminal was displaying everthing before the current functions aswell. So i found this helpful [thread](https://stackoverflow.com/questions/2084508/clear-the-terminal-in-python) about `os.sytem("clear")`.
+
+- I had problems finding the solution, how the game could recognize more than one of the same letter in a word, until I found this [thread](https://stackoverflow.com/questions/22114521/python-hangman-game-with-multiple-letters-in-one-word) which helped me immensely.
+
+- I connected with other students about possible ideas about our projects. We were able to solve each others problems and help each other out with hurdles we solved already. I could not come up with a scoreboard that is sorted the correct way. The student [Naomi](https://github.com/Xakkusu) helped me here a lot because she introduced me to [Pandas](https://pandas.pydata.org/docs/index.html) and sent me [articles](https://realpython.com/pandas-sort-python/) to help me figure it out as well as explaining [her code](https://github.com/Xakkusu/hangman-game/blob/main/run.py) she used line by line so that I would understand is as well and be able to use pandas the right way.
 
 ## Fixed Bugs
 
+- My scoreboard was sorted from the lowest to highest, lowest is the best score. I mulitplied `len(word)` and `wrong_guesses_left` with **1000** and divided it through seconds. This resulted in scoring numbers beewteen **5000** and **9000**. But if a user takes really long to complete the score would go above **10000**. The **10000** was placed as the best even though it should be the worst. Same happend, when i reversed the order and put the highest score on top. Then the score with **10000** would go on the last place in the list. In general it hat a problem with decimal numbers and my formula wasn't correct to display what I want it to display.
+    - To fix this i rewrote my calculating function. Now seconds are mulitplied by **100** and divided by `len(word)` plus `wrong_guesses_left`. So the formula made sense and with this whole numbers were calculated in the end as the score. This way there was no way that floats could change the order nor a too high number would be paced best.
+
+- There was a problem with my while loop when I asked for an username. Even though the error message would show that the user has to reenter a name, the wrong name was still saved to the google sheet.
+    - This was because of a wrong indentation in this while loop, so invalid usernames would be saved to scoreboard, even though a error message appeard. Fix that bug by indenting wright. Everything after my validation was indented as well. I deleted this indentation for all unnecessary code and it worked the right way.
+
 
 ## Future Content
-- I'm pretty happy with the website, would probably add the time to complete to the scoreboard aswell.
+
+- Would implement a feature where people could guess whole words and not only single letters but otherwise I'm satisfied with my work.
 
 ## Acknowledgments
 My mentor Jubril Akolade for his guidance, input and support.
 
-The Slack community on Code Institute for reviewing my project and for support.
+The Slack community on Code Institute for reviewing my project and for support and other students for their input.
 
 Code Institute for informational courses.
+
+[Back to the Top](#hangman-game)

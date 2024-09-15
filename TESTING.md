@@ -2,7 +2,8 @@
 
 ![Hangman Game Start PNG](/assets/docs/readme-images/hangman-game-picture.png)
 
-Visit the deployed site: [Hangman Game]([here](https://hangman-project-3-fs-e5867a39357d.herokuapp.com/))
+Visit the deployed site: [Hangman Game](https://hangman-project-3-fs-e5867a39357d.herokuapp.com/)
+
 
 
 ## Content
@@ -40,7 +41,7 @@ The website was successfully tested on the following browsers:
 
 ### Input Testing
 
-I implemented a validator testing for every input the user has to make.
+I implemented a validator testing for every input the user has to make and they work correctly.
 
 <details>
 <summary>Validator Main Menu</summary>
@@ -78,13 +79,13 @@ I implemented a validator testing for every input the user has to make.
 
 - **I want to play a word-guessing game / Hangman game.**
 
-    The user can play the game with the first option available for him.
+    The user can play the game as one of the choices in the menu.
 - **I want the site read instructions on how to play.**
 
     The user can find instructions on how to play in the main menu.
 - **I want the program to be easy to navigate and use.**
 
-    The navigation of the program is preety simpli, just used numbers beetween 1-5.
+    The navigation of the program is pretty simple, one just has to use numbers between 1-5.
 - **I want to be able to test my knowledge in different categories.**
 
     There are 5 categories the user can choose from.
