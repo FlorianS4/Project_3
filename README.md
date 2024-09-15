@@ -291,7 +291,7 @@ The Hangman Game contains names from movies and video games. All names belong to
 
 - I had problems finding the solution, how the game could recognize more than one of the same letter in a word, until I found this [thread](https://stackoverflow.com/questions/22114521/python-hangman-game-with-multiple-letters-in-one-word) which helped me immensely.
 
-- I connected with other students about possible ideas about our projects. We were able to solve each others problems and help each other out with hurdles we solved already. I could not come up with a scoreboard that is sorted the correct way. The student [Naomi](https://github.com/Xakkusu) helped me here a lot because she introduced me to [Pandas](https://pandas.pydata.org/docs/index.html) and sent me [articles](https://realpython.com/pandas-sort-python/) to help me figure it out as well as explaining [her code](https://github.com/Xakkusu/hangman-game/blob/main/run.py) she used line by line so that I would understand is as well and be able to use pandas the right way.
+- I connected with other students about possible ideas about our projects. We were able to solve each others problems and help each other out with hurdles we solved already. I could not come up with a scoreboard that is sorted the correct way. The student [Naomi](https://github.com/Xakkusu) helped me here a lot because she introduced me to [Pandas](https://pandas.pydata.org/docs/index.html) and sent me [articles](https://realpython.com/pandas-sort-python/) to help me figure it out as well as explaining [her code](https://github.com/Xakkusu/hangman-game/blob/main/run.py) she used line by line so that I would understand it as well and be able to use pandas the right way.
 
 ## Fixed Bugs
 
