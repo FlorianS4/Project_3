@@ -243,7 +243,8 @@ def get_word():
 # input function
 def input_user():
     """
-    takes input from user
+    takes input from user and checks if it is
+    correct and handels it if it is or not
     """
     letters_guessed = []
     game_over = False
@@ -286,6 +287,7 @@ def input_user():
 def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
     """
     Validates if letter is in word
+    Ends the game if the user has no guess left
     """
     if guess in word:
         print(Fore.GREEN + "Guess was correct!" + Fore.RESET + "\n")
@@ -314,6 +316,7 @@ def check_guess(guess, wrong_guesses_left, hangman_index, hint, game_over):
 def update_hint(guess, hint, wrong_guesses_left):
     """
     Adds a correct guess and updates hint
+    ends the game if user guesses word correctly
     """
     pos_of_guess = [i for i, letters in enumerate(word) if letters == guess]
     hint_arr = list(hint)
